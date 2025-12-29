@@ -6,7 +6,7 @@ typedef struct node node;
 
 struct node
 {
-    int value;
+    char value;
     node *next;
 };
 
@@ -28,13 +28,13 @@ stack *create_stack()
     return new_stack;
 }
 
-void insert_stack(stack *st, int k)
+void insert_stack(stack *st, char c)
 {
     node *new_node = (node *)malloc(sizeof(node));
     if (!new_node)
         return;
 
-    new_node->value = k;
+    new_node->value = c;
 
     if (st->size == 0)
     {

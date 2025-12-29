@@ -1,0 +1,20 @@
+#include "stack.h"
+
+typedef struct
+{
+    int rows;
+    int cols;
+    stack ***cells;
+} Board;
+
+Board createBoard(int rows, int cols);
+void destroyBoardPartial(Board *board, int rows_filled, int cols_filled);
+void initBoard(Board b);
+void showBoard(Board *b);
+void destroyBoard(Board *b);
+
+typedef enum
+{
+    WHITE = '0',
+    BLACK = ' '
+} Token;
