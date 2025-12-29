@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Faltando pensar em uma melhor maneira de tratar possiveis erros de alocacao*/
-
 Board createBoard(int rows, int cols)
 {
     Board new_board;
@@ -37,13 +35,18 @@ Board createBoard(int rows, int cols)
     return new_board;
 }
 
-void initBoard(Board b)
+void initBoard(Board *b)
 {
-    for (int i = 0; i < b.rows; i++)
+    for (int i = 0; i < b->rows; i++)
     {
-        for (int j = 0; j < b.cols; j++)
+        for (int j = 0; j < b->cols; j++)
         {
-            insert_stack(b.cells[i][j], WHITE);
+            insert_stack(b->cells[i][j], TOKEN);
+
+            if (i % 2 == 0)
+                j % 2 == 0 ? st_set_color(b->cells[i][j], 'r') : st_set_color(b->cells[i][j], 'b');
+            else
+                j % 2 == 0 ? st_set_color(b->cells[i][j], 'b') : st_set_color(b->cells[i][j], 'r');
         }
     }
 }
@@ -76,28 +79,30 @@ void showBoard(Board *b)
 {
     printf("    ");
     for (int j = 0; j < b->cols; j++)
-        printf(" %zu  ", j);
+        printf(" %zu  ", j + 1);
     printf("\n");
 
-    printf("   +");
+    printf(ORANGE "   +" RESET);
     for (int j = 0; j < b->cols; j++)
-        printf("---+");
+        printf(ORANGE "---+" RESET);
     printf("\n");
 
     for (int i = 0; i < b->rows; i++)
     {
-        printf(" %zu |", i);
+        printf(" %zu", i + 1);
+        printf(ORANGE " |" RESET);
 
         for (int j = 0; j < b->cols; j++)
         {
-            char c = view_top(b->cells[i][j]);
-            printf(" %c |", c);
+            char color = st_view_color(b->cells[i][j]);
+            color == 'r' ? printf(RED " %c" RESET, TOKEN) : printf(BLUE " %c" RESET, TOKEN);
+            printf(ORANGE " |" RESET);
         }
         printf("\n");
 
-        printf("   +");
+        printf(ORANGE "   +" RESET);
         for (int j = 0; j < b->rows; j++)
-            printf("---+");
+            printf(ORANGE "---+" RESET);
         printf("\n");
     }
 }

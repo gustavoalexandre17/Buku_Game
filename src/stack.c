@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,6 +14,7 @@ struct node
 struct stack
 {
     node *top;
+    char color;
     int size;
 };
 
@@ -27,6 +29,10 @@ stack *create_stack()
     new_stack->size = 0;
     return new_stack;
 }
+
+void st_set_color(stack *st, char color) { st->color = color; }
+
+char st_view_color(stack *st) { return st->color; }
 
 void insert_stack(stack *st, char c)
 {

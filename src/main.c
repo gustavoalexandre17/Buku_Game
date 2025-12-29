@@ -3,6 +3,7 @@
 
 int main(void)
 {
+    /* O numero te linhas tem que ser igual ao numero de colunas */
     printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
     int row, col;
     scanf("%d %d", &row, &col);
@@ -10,7 +11,7 @@ int main(void)
     Board board = createBoard(row, col);
     printf("\nTabuleiro criado com sucesso!\n");
 
-    initBoard(board);
+    initBoard(&board);
     printf("\nInicializando o tabuleiro...\n");
 
     showBoard(&board);
