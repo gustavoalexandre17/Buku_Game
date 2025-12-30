@@ -50,3 +50,9 @@ int pick_col(Hand *hand, Board *board, int col, int tamanho)
 
     return 1;
 }
+
+void free_hand(Hand *hand)
+{
+    free_stack(hand->pieces);
+    free(hand);
+}
