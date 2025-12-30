@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "../include/stack.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -87,6 +87,8 @@ void print_stack(stack *st)
 }
 
 int view_top(stack *st) { return st->top->value; }
+
+int view_size(stack *st) { return st->size; }
 
 void free_stack(stack *st)
 {
