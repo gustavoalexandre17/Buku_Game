@@ -12,10 +12,10 @@ typedef struct
     stack ***cells;
 } Board;
 
-Board createBoard(int rows, int cols);
-void destroyBoardPartial(Board *board, int rows_filled, int cols_filled);
-void initBoard(Board *b);
-void showBoard(Board *b);
-void destroyBoard(Board *b);
+Board *createBoard(int rows, int cols);
+int destroyBoardPartial(Board *b, int rows_filled, int cols_filled);
+int initBoard(Board *b);
+int showBoard(Board *b);
+int destroyBoard(Board *b);
 
 #endif

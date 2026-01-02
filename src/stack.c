@@ -30,10 +30,6 @@ stack *create_stack()
     return new_stack;
 }
 
-void st_set_color(stack *st, char color) { st->color = color; }
-
-char st_view_color(stack *st) { return st->color; }
-
 void insert_stack(stack *st, char c)
 {
     node *new_node = (node *)malloc(sizeof(node));
@@ -86,18 +82,14 @@ void print_stack(stack *st)
     }
 }
 
-int view_top(stack *st) { return st->top->value; }
-
-int view_size(stack *st) { return st->size; }
-
 void free_stack(stack *st)
 {
-    if (st->top == NULL)
+    if (!st->top)
         free(st);
 
     node *aux = st->top;
 
-    while (aux != NULL)
+    while (aux)
     {
         node *to_free = aux;
         aux = aux->next;
@@ -105,3 +97,11 @@ void free_stack(stack *st)
     }
     free(st);
 }
+
+void st_set_color(stack *st, char color) { st->color = color; }
+
+char st_view_color(stack *st) { return st->color; }
+
+int st_view_top(stack *st) { return st->top->value; }
+
+int st_view_size(stack *st) { return st->size; }

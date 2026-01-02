@@ -1,42 +1,52 @@
 #include "../include/board.h"
+#include "../include/hand.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-Board createBoard(int rows, int cols)
+Board *createBoard(int rows, int cols)
 {
-    Board new_board;
+    if (rows <= 0 || cols <= 0)
+        return NULL;
 
-    new_board.rows = rows;
-    new_board.cols = cols;
+    Board *new_board = (Board *)malloc(sizeof(Board));
 
-    new_board.cells = (stack ***)malloc(rows * sizeof(stack **));
-    if (!new_board.cells)
-        return (Board){0}; // O equivalente ao NULL para o struct board
+    if (!new_board)
+        return NULL;
+
+    new_board->rows = rows;
+    new_board->cols = cols;
+
+    new_board->cells = (stack ***)malloc(rows * sizeof(stack **));
+    if (!new_board->cells)
+        return NULL;
 
     for (int i = 0; i < rows; i++)
     {
-        new_board.cells[i] = (stack **)malloc(cols * sizeof(stack *));
-        if (!new_board.cells[i])
+        new_board->cells[i] = (stack **)malloc(cols * sizeof(stack *));
+        if (!new_board->cells[i])
         {
-            destroyBoardPartial(&new_board, i, cols);
-            return (Board){0};
+            destroyBoardPartial(new_board, i, cols);
+            return NULL;
         }
 
         for (int j = 0; j < cols; j++)
         {
-            new_board.cells[i][j] = create_stack();
-            if (!new_board.cells[i][j])
+            new_board->cells[i][j] = create_stack();
+            if (!new_board->cells[i][j])
             {
-                destroyBoardPartial(&new_board, i + 1, j);
-                return (Board){0};
+                destroyBoardPartial(new_board, i + 1, j);
+                return NULL;
             }
         }
     }
     return new_board;
 }
 
-void initBoard(Board *b)
+int initBoard(Board *b)
 {
+    if (!b)
+        return -1;
+
     for (int i = 0; i < b->rows; i++)
     {
         for (int j = 0; j < b->cols; j++)
@@ -55,17 +65,25 @@ void initBoard(Board *b)
     desfazendo todas as alocacoes anteriores a que gerou erro.
 */
 
-void destroyBoardPartial(Board *board, int rows_filled, int cols_filled)
+int destroyBoardPartial(Board *b, int rows_filled, int cols_filled)
 {
+    if (!b)
+        return -1;
+
     for (int i = 0; i < rows_filled; i++)
     {
-        for (int j = 0; i < cols_filled; j++)
-            free_stack(board->cells[i][j]);
+        for (int j = 0; j < cols_filled; j++)
+            free_stack(b->cells[i][j]);
     }
+
+    return 0;
 }
 
-void destroyBoard(Board *b)
+int destroyBoard(Board *b)
 {
+    if (!b)
+        return -1;
+
     for (int i = 0; i < b->rows; i++)
     {
         for (int j = 0; j < b->cols; j++)
@@ -73,36 +91,43 @@ void destroyBoard(Board *b)
         free(b->cells[i]);
     }
     free(b->cells);
+
+    return 0;
 }
 
-void showBoard(Board *b)
+int showBoard(Board *b)
 {
+    if (!b)
+        return -1;
+
     printf("    ");
     for (int j = 0; j < b->cols; j++)
         printf(" %zu  ", j + 1);
     printf("\n");
 
-    printf(ORANGE "   +" RESET);
+    printf(BLACK "   +" RESET);
     for (int j = 0; j < b->cols; j++)
-        printf(ORANGE "---+" RESET);
+        printf(BLACK "---+" RESET);
     printf("\n");
 
     for (int i = 0; i < b->rows; i++)
     {
         printf(" %zu", i + 1);
-        printf(ORANGE " |" RESET);
+        printf(BLACK " |" RESET);
 
         for (int j = 0; j < b->cols; j++)
         {
             char color = st_view_color(b->cells[i][j]);
             color == 'r' ? printf(RED " %c" RESET, TOKEN) : printf(BLUE " %c" RESET, TOKEN);
-            printf(ORANGE " |" RESET);
+            printf(BLACK " |" RESET);
         }
         printf("\n");
 
-        printf(ORANGE "   +" RESET);
+        printf(BLACK "   +" RESET);
         for (int j = 0; j < b->rows; j++)
-            printf(ORANGE "---+" RESET);
+            printf(BLACK "---+" RESET);
         printf("\n");
     }
+
+    return 0;
 }
