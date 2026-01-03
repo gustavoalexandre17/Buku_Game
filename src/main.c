@@ -1,5 +1,6 @@
 #include "../include/board.h"
 #include "../include/hand.h"
+#include "../include/makeMove.h"
 #include <stdio.h>
 
 int main()
@@ -35,9 +36,30 @@ int main()
         scanf("%d", &playedRow);
     }
     pick_row(hand, board, playedRow - 1, board->cols);
-    printf("O tamanho da mao e de: %d\n", hand_size(hand));
+    printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
 
-    printf("Vez do jogador 2:\n");
+    int placedPieces = 0;
+    playedHand *play = createPlayedHand(hand_size(hand));
+
+    for (int i = 0; i < hand_size(hand); i++)
+    {
+        int tempRow, tempCol;
+        printf("\nDigite a linha da %d° jogada: ", i + 1);
+        scanf("%d", &tempRow);
+        printf("Digite a coluna da %d° jogada: ", i + 1);
+        scanf("%d", &tempCol);
+        play[i].row = tempRow;
+        play[i].col = tempCol;
+    }
+
+    for (int i = 0; i < hand_size(hand); i++)
+    {
+        printf("{%d,%d} ", play[i].row, play[i].col);
+    }
+
+    printf("\n");
+
+    printf("\nVez do jogador 2:\n");
     printf("Selecione a Coluna (1 a %d):\n", col);
 
     int playedCol;
@@ -50,7 +72,7 @@ int main()
     }
 
     pick_col(hand, board, playedCol - 1, board->rows);
-    printf("O tamanho da mao e de: %d\n", hand_size(hand));
+    printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
 
     showBoard(board);
 

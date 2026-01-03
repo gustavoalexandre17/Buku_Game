@@ -51,7 +51,7 @@ int initBoard(Board *b)
     {
         for (int j = 0; j < b->cols; j++)
         {
-            insert_stack(b->cells[i][j], TOKEN);
+            insert_stack(b->cells[i][j], 'O');
 
             if (i % 2 == 0)
                 j % 2 == 0 ? st_set_color(b->cells[i][j], 'r') : st_set_color(b->cells[i][j], 'b');
@@ -118,7 +118,15 @@ int showBoard(Board *b)
         for (int j = 0; j < b->cols; j++)
         {
             char color = st_view_color(b->cells[i][j]);
-            color == 'r' ? printf(RED " %c" RESET, TOKEN) : printf(BLUE " %c" RESET, TOKEN);
+            if (st_view_size(b->cells[i][j]))
+            {
+                color == 'r' ? printf(RED " %d" RESET, st_view_size(b->cells[i][j]))
+                             : printf(BLUE " %d" RESET, st_view_size(b->cells[i][j]));
+            }
+            else
+            {
+                color == 'r' ? printf(RED " %c" RESET, TOKEN) : printf(BLUE " %c" RESET, TOKEN);
+            }
             printf(BLACK " |" RESET);
         }
         printf("\n");
@@ -130,4 +138,20 @@ int showBoard(Board *b)
     }
 
     return 0;
+}
+
+int fillBoard(Board *b)
+{
+    if (!b)
+        return -1;
+
+    for (int i = 0; i < b->rows; i++)
+    {
+        for (int j = 0; j < b->cols; j++)
+        {
+            insert_stack(b->cells[i][j], 'O');
+        }
+    }
+
+    return 1;
 }

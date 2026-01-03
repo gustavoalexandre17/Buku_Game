@@ -17,7 +17,7 @@ int pick_row(Hand *hand, Board *board, int row, int size)
 
     for (int i = 0; i < size; i++)
     {
-        while (st_view_size(board->cells[row][i]) > 1)
+        while (st_view_size(board->cells[row][i]) > 0)
         {
             insert_stack(hand->pieces, 'O');
             pop_stack(board->cells[row][i]);
@@ -33,7 +33,7 @@ int pick_col(Hand *hand, Board *board, int col, int size)
 
     for (int i = 0; i < size; i++)
     {
-        while (st_view_size(board->cells[i][col]) > 1)
+        while (st_view_size(board->cells[i][col]) > 0)
         {
             insert_stack(hand->pieces, 'O');
             pop_stack(board->cells[i][col]);
@@ -51,6 +51,5 @@ int free_hand(Hand *hand)
 
     free_stack(hand->pieces);
     free(hand);
-
     return 0;
 }

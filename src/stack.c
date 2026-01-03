@@ -84,8 +84,8 @@ void print_stack(stack *st)
 
 void free_stack(stack *st)
 {
-    if (!st->top)
-        free(st);
+    if (!st)
+        return;
 
     node *aux = st->top;
 
@@ -102,6 +102,6 @@ void st_set_color(stack *st, char color) { st->color = color; }
 
 char st_view_color(stack *st) { return st->color; }
 
-int st_view_top(stack *st) { return st->top->value; }
+char st_view_top(stack *st) { return st->top->value; }
 
 int st_view_size(stack *st) { return st->size; }
