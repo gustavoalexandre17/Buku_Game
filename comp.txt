@@ -1,1 +1,1 @@
-gcc src/main.c src/board.c src/stack.c src/hand.c -Iinclude -o bin/main.exe && bin/main.exe
+gcc src/main.c src/board.c src/stack.c src/hand.c src/makeMove.c -Iinclude -o bin/main.exe && bin/main.exe
