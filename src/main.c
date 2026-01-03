@@ -5,19 +5,27 @@
 
 int main()
 {
+    // Variáveis usadas:
+    int row, col, playedRow, playedCol;
+    int inicializador = 1;
+    Board *board;
+    Hand *hand;
+    playedHand *play;
+
     printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
-    int row, col;
     scanf("%d %d", &row, &col);
 
-    Board *board = createBoard(row, col);
+    board = createBoard(row, col);
+
     if (!board)
     {
         printf("Erro ao criar tabuleiro.\n");
         return 1;
     }
+
     printf("\nTabuleiro criado com sucesso!\n");
 
-    Hand *hand = createHand();
+    hand = createHand();
     printf("\nHand criada com sucesso!\n");
 
     initBoard(board);
@@ -25,69 +33,115 @@ int main()
 
     showBoard(board);
 
-    printf("Vez do jogador 1:\n");
-    printf("Selecione a linha (1 a %d):\n", row);
-    int playedRow;
-    scanf("%d", &playedRow);
-
-    while (playedRow < 1 || playedRow > row)
+    while (inicializador)
     {
-        printf("Linha inválida, por favor, digite uma linha válida!\n");
+
+        // Loop Jogador 1:
+        printf("Vez do jogador 1:\n");
+        printf("Selecione a linha (1 a %d):\n", row);
         scanf("%d", &playedRow);
-    }
-    pick_row(hand, board, playedRow - 1, board->cols);
-    printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
 
-    int placedPieces = 0;
-    playedHand *play = createPlayedHand(hand_size(hand));
+        while (playedRow < 1 || playedRow > row)
+        {
+            printf("Linha inválida, por favor, digite uma linha válida!\n");
+            scanf("%d", &playedRow);
+        }
 
-    for (int i = 0; i < hand_size(hand); i++)
-    {
-        int tempRow, tempCol;
-        printf("\nDigite a linha da %d° jogada: ", i + 1);
-        scanf("%d", &tempRow);
-        printf("Digite a coluna da %d° jogada: ", i + 1);
-        scanf("%d", &tempCol);
-        play[i].row = tempRow - 1;
-        play[i].col = tempCol - 1;
-    }
+        pick_row(hand, board, playedRow - 1, board->cols);
 
-    if (validateTotalMove(play, row))
-    {
-        printf("\nJogada válida\n");
-    }
-    else
-    {
-        printf("\nJogada inválida\n");
-    }
+        printf("\nEstado atual: \n");
+        showBoard(board);
 
-    put_hand(hand, board, play);
+        printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
 
-    showBoard(board);
+        play = createPlayedHand(hand_size(hand));
 
-    for (int i = 0; i < hand_size(hand); i++)
-    {
-        printf("{%d,%d} ", play[i].row, play[i].col);
-    }
+        for (int i = 0; i < hand_size(hand); i++)
+        {
+            int tempRow, tempCol;
+            printf("\nDigite a linha da %d° jogada: ", i + 1);
+            scanf("%d", &tempRow);
+            printf("Digite a coluna da %d° jogada: ", i + 1);
+            scanf("%d", &tempCol);
+            play[i].row = tempRow - 1;
+            play[i].col = tempCol - 1;
+        }
 
-    printf("\n");
+        if (validateTotalMove(play, row))
+        {
+            printf("\nJogada válida\n");
+        }
+        else
+        {
+            printf("\nJogada inválida\n");
+        }
 
-    printf("\nVez do jogador 2:\n");
-    printf("Selecione a Coluna (1 a %d):\n", col);
+        put_hand(hand, board, play);
 
-    int playedCol;
-    scanf("%d", &playedCol);
+        showBoard(board);
 
-    while (playedCol < 1 || playedCol > col)
-    {
-        printf("Coluna inválida, por favor, digite uma coluna válida!\n");
+        for (int i = 0; i < hand_size(hand); i++)
+        {
+            printf("{%d,%d} ", play[i].row, play[i].col);
+        }
+
+        printf("\n");
+
+        // Loop jogador 2:
+
+        printf("\nVez do jogador 2:\n");
+        printf("Selecione a Coluna (1 a %d):\n", col);
+
         scanf("%d", &playedCol);
+
+        while (playedCol < 1 || playedCol > col)
+        {
+            printf("Coluna inválida, por favor, digite uma coluna válida!\n");
+            scanf("%d", &playedCol);
+        }
+
+        pick_col(hand, board, playedCol - 1, board->rows);
+
+        printf("\nEstado atual: \n");
+        showBoard(board);
+
+        printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
+
+        showBoard(board);
+
+        play = createPlayedHand(hand_size(hand));
+
+        for (int i = 0; i < hand_size(hand); i++)
+        {
+            int tempRow, tempCol;
+            printf("\nDigite a linha da %d° jogada: ", i + 1);
+            scanf("%d", &tempRow);
+            printf("Digite a coluna da %d° jogada: ", i + 1);
+            scanf("%d", &tempCol);
+            play[i].row = tempRow - 1;
+            play[i].col = tempCol - 1;
+        }
+
+        if (validateTotalMove(play, row))
+        {
+            printf("\nJogada válida\n");
+        }
+        else
+        {
+            printf("\nJogada inválida\n");
+        }
+
+        put_hand(hand, board, play);
+
+        showBoard(board);
+
+        for (int i = 0; i < hand_size(hand); i++)
+        {
+            printf("{%d,%d} ", play[i].row, play[i].col);
+        }
+
+        printf("\n");
     }
-
-    pick_col(hand, board, playedCol - 1, board->rows);
-    printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
-
-    showBoard(board);
 
     destroyBoard(board);
     free_hand(hand);
