@@ -2,6 +2,7 @@
 #define HAND_H
 
 #include "board.h"
+#include "makeMove.h"
 
 typedef struct
 {

@@ -52,6 +52,14 @@ int main()
         play[i].col = tempCol;
     }
 
+    if (validateTotalMove(play, row))
+    {
+        printf("\nJogada válida");
+    }
+    else
+    {
+        printf("\nJogada inválida");
+    }
     for (int i = 0; i < hand_size(hand); i++)
     {
         printf("{%d,%d} ", play[i].row, play[i].col);
