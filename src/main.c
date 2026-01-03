@@ -48,18 +48,23 @@ int main()
         scanf("%d", &tempRow);
         printf("Digite a coluna da %d° jogada: ", i + 1);
         scanf("%d", &tempCol);
-        play[i].row = tempRow;
-        play[i].col = tempCol;
+        play[i].row = tempRow - 1;
+        play[i].col = tempCol - 1;
     }
 
     if (validateTotalMove(play, row))
     {
-        printf("\nJogada válida");
+        printf("\nJogada válida\n");
     }
     else
     {
-        printf("\nJogada inválida");
+        printf("\nJogada inválida\n");
     }
+
+    put_hand(hand, board, play);
+
+    showBoard(board);
+
     for (int i = 0; i < hand_size(hand); i++)
     {
         printf("{%d,%d} ", play[i].row, play[i].col);

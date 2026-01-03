@@ -42,6 +42,22 @@ int pick_col(Hand *hand, Board *board, int col, int size)
     return 0;
 }
 
+int put_hand(Hand *hand, Board *board, playedHand *ph)
+{
+    if (!hand || !board || !ph)
+        return 0;
+
+    int tamanho = hand_size(hand);
+
+    for (int i = 0; i < tamanho; i++)
+    {
+        insert_stack(board->cells[ph[i].row][ph[i].col], st_view_top(hand->pieces));
+        pop_stack(hand->pieces);
+    }
+
+    return 1;
+}
+
 int hand_size(Hand *hand) { return st_view_size(hand->pieces); }
 
 int free_hand(Hand *hand)
