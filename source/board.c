@@ -8,13 +8,13 @@ Board *create_board()
     int rows, cols;
 
     printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
-    scanf("%d %d", &rows, &cols);
+    scanf("%d%d", &rows, &cols);
 
-    do
+    while (rows != cols)
     {
         printf("\nO numero de linhas e colunas do tabuleiro devem ser iguais!\n");
-        scanf("%d %d", &rows, &cols);
-    } while (rows != cols);
+        scanf("%d%d", &rows, &cols);
+    }
 
     if (rows <= 0 || cols <= 0)
         return NULL;
