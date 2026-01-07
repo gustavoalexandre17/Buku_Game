@@ -3,8 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Board *createBoard(int rows, int cols)
+Board *create_board()
 {
+    int rows, cols;
+
+    printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
+    scanf("%d %d", &rows, &cols);
+
+    do
+    {
+        printf("\nO numero de linhas e colunas do tabuleiro devem ser iguais!\n");
+        scanf("%d %d", &rows, &cols);
+    } while (rows != cols);
+
     if (rows <= 0 || cols <= 0)
         return NULL;
 
@@ -15,8 +26,8 @@ Board *createBoard(int rows, int cols)
 
     new_board->rows = rows;
     new_board->cols = cols;
-
     new_board->cells = (stack ***)malloc(rows * sizeof(stack **));
+
     if (!new_board->cells)
         return NULL;
 
@@ -25,7 +36,7 @@ Board *createBoard(int rows, int cols)
         new_board->cells[i] = (stack **)malloc(cols * sizeof(stack *));
         if (!new_board->cells[i])
         {
-            destroyBoardPartial(new_board, i, cols);
+            destroy_board_partial(new_board, i, cols);
             return NULL;
         }
 
@@ -34,15 +45,16 @@ Board *createBoard(int rows, int cols)
             new_board->cells[i][j] = create_stack();
             if (!new_board->cells[i][j])
             {
-                destroyBoardPartial(new_board, i + 1, j);
+                destroy_board_partial(new_board, i + 1, j);
                 return NULL;
             }
         }
     }
+    printf("\nTabuleiro criado com sucesso!\n");
     return new_board;
 }
 
-int initBoard(Board *b)
+int init_board(Board *b)
 {
     if (!b)
         return -1;
@@ -65,7 +77,7 @@ int initBoard(Board *b)
     desfazendo todas as alocacoes anteriores a que gerou erro.
 */
 
-int destroyBoardPartial(Board *b, int rows_filled, int cols_filled)
+int destroy_board_partial(Board *b, int rows_filled, int cols_filled)
 {
     if (!b)
         return -1;
@@ -79,7 +91,7 @@ int destroyBoardPartial(Board *b, int rows_filled, int cols_filled)
     return 0;
 }
 
-int destroyBoard(Board *b)
+int destroy_board(Board *b)
 {
     if (!b)
         return -1;
@@ -95,7 +107,7 @@ int destroyBoard(Board *b)
     return 0;
 }
 
-int showBoard(Board *b)
+int show_board(Board *b)
 {
     if (!b)
         return -1;
@@ -140,7 +152,7 @@ int showBoard(Board *b)
     return 0;
 }
 
-int fillBoard(Board *b)
+int fill_board(Board *b)
 {
     if (!b)
         return -1;
@@ -152,6 +164,5 @@ int fillBoard(Board *b)
             insert_stack(b->cells[i][j], 'O');
         }
     }
-
     return 1;
 }
