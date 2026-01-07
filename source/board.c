@@ -166,3 +166,5 @@ int fill_board(Board *b)
     }
     return 1;
 }
+
+int view_board_size(Board *b) { return b->rows; }

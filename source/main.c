@@ -8,7 +8,7 @@
 int main()
 {
     Board *board = create_board();
-    Hand *hand = create_hand();
+    Hand *hand = create_hand(view_board_size(board));
 
     Player *p1 = create_player("vermelho");
     Player *p2 = create_player("azul");
