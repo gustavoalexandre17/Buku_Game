@@ -27,6 +27,7 @@ stack *create_stack()
 
     new_stack->top = NULL;
     new_stack->size = 0;
+
     return new_stack;
 }
 

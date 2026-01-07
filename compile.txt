@@ -1,0 +1,1 @@
+gcc source/main.c source/player.c source/game.c source/board.c source/stack.c source/hand.c source/move.c -Iinclude -o bin/main.exe && bin/main.exe

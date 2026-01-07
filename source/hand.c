@@ -3,9 +3,13 @@
 #include "../include/stack.h"
 #include <stdlib.h>
 
-Hand *createHand()
+Hand *create_hand()
 {
     Hand *newHand = (Hand *)malloc(sizeof(Hand));
+
+    if (!newHand)
+        return NULL;
+
     newHand->pieces = create_stack();
     return newHand;
 }
@@ -42,14 +46,13 @@ int pick_col(Hand *hand, Board *board, int col, int size)
     return 0;
 }
 
-int put_hand(Hand *hand, Board *board, playedHand *ph)
+// EXIBINDO COMPORTAMENTO INCORRETO
+int put_hand(Hand *hand, Board *board, PlayedHand *ph)
 {
     if (!hand || !board || !ph)
         return 0;
 
-    int tamanho = hand_size(hand);
-
-    for (int i = 0; i < tamanho; i++)
+    for (int i = 0; i < hand_size(hand); i++)
     {
         insert_stack(board->cells[ph[i].row][ph[i].col], st_view_top(hand->pieces));
         pop_stack(hand->pieces);
