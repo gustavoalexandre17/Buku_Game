@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// REFATORAR EM FUNCOES MENORES
 Board *create_board()
 {
     int rows, cols;
@@ -73,6 +72,10 @@ int init_board(Board *b)
         }
     }
 }
+
+/*  Essa funcao serve apenas para tratar eventuais erros de alocacao durante a criacao do tabuleiro,
+    desfazendo todas as alocacoes anteriores a que gerou erro.
+*/
 
 int destroy_board_partial(Board *b, int rows_filled, int cols_filled)
 {
