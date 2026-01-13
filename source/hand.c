@@ -49,7 +49,6 @@ int pick_col(Hand *hand, Board *board, int col, int size)
     return 0;
 }
 
-// EXIBINDO COMPORTAMENTO INCORRETO
 int put_hand(Hand *hand, Board *board, PlayedHand *ph)
 {
     if (!hand || !board || !ph)
@@ -62,7 +61,6 @@ int put_hand(Hand *hand, Board *board, PlayedHand *ph)
         insert_stack(board->cells[ph[i].row][ph[i].col], st_view_top(hand->pieces));
         pop_stack(hand->pieces);
     }
-
     return 1;
 }
 
