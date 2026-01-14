@@ -6,7 +6,7 @@
 
 typedef struct
 {
-    stack *pieces;
+    Stack *pieces;
 } Hand;
 
 Hand *create_hand(int board_size);

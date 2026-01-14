@@ -1,16 +1,16 @@
 #ifndef STACK_H
 #define STACK_H
 
-typedef struct stack stack;
+typedef struct stack Stack;
 
-stack *create_stack();
-void insert_stack(stack *st, char c);
-int pop_stack(stack *st);
-char st_view_top(stack *st);
-int st_view_size(stack *st);
-void st_set_color(stack *st, char color);
-char st_view_color(stack *st);
-void print_stack(stack *st);
-void free_stack(stack *st);
+Stack *create_stack();
+void insert_stack(Stack *st, char c);
+int pop_stack(Stack *st);
+char st_view_top(Stack *st);
+int st_view_size(Stack *st);
+void st_set_color(Stack *st, char color);
+char st_view_color(Stack *st);
+void print_stack(Stack *st);
+void free_stack(Stack *st);
 
 #endif

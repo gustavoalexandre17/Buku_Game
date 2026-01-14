@@ -9,7 +9,7 @@ typedef struct
 {
     int rows;
     int cols;
-    stack ***cells;
+    Stack ***cells;
 } Board;
 
 Board *create_board();

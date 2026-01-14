@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// REFATORAR EM FUNCOES MENORES
+/*Passievel de refatoracao*/
 Board *create_board()
 {
     int rows, cols;
@@ -11,10 +11,10 @@ Board *create_board()
     printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
     scanf("%d%d", &rows, &cols);
 
-    while (rows != cols)
+    while (rows != cols || rows <= 0 || cols <= 0 || rows >= 10 || cols >= 10)
     {
         printf("\nO numero de linhas e colunas do tabuleiro devem ser iguais!\n");
-        scanf("%d%d", &rows, &cols);
+        scanf("%d %d", &rows, &cols);
     }
 
     if (rows <= 0 || cols <= 0)
@@ -27,14 +27,14 @@ Board *create_board()
 
     new_board->rows = rows;
     new_board->cols = cols;
-    new_board->cells = (stack ***)malloc(rows * sizeof(stack **));
+    new_board->cells = (Stack ***)malloc(rows * sizeof(Stack **));
 
     if (!new_board->cells)
         return NULL;
 
     for (int i = 0; i < rows; i++)
     {
-        new_board->cells[i] = (stack **)malloc(cols * sizeof(stack *));
+        new_board->cells[i] = (Stack **)malloc(cols * sizeof(Stack *));
         if (!new_board->cells[i])
         {
             destroy_board_partial(new_board, i, cols);
@@ -73,6 +73,10 @@ int init_board(Board *b)
         }
     }
 }
+
+/*  Essa funcao serve apenas para tratar eventuais erros de alocacao durante a criacao do tabuleiro,
+    desfazendo todas as alocacoes anteriores a que gerou erro.
+*/
 
 int destroy_board_partial(Board *b, int rows_filled, int cols_filled)
 {

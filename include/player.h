@@ -5,7 +5,7 @@
 
 typedef struct
 {
-    stack *points;
+    Stack *points;
     char *color;
 } Player;
 

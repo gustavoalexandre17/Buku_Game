@@ -18,9 +18,9 @@ struct stack
     int size;
 };
 
-stack *create_stack()
+Stack *create_stack()
 {
-    stack *new_stack = (stack *)malloc(sizeof(stack));
+    Stack *new_stack = (Stack *)malloc(sizeof(Stack));
 
     if (!new_stack)
         return NULL;
@@ -31,7 +31,7 @@ stack *create_stack()
     return new_stack;
 }
 
-void insert_stack(stack *st, char c)
+void insert_stack(Stack *st, char c)
 {
     node *new_node = (node *)malloc(sizeof(node));
     if (!new_node)
@@ -53,7 +53,7 @@ void insert_stack(stack *st, char c)
     st->size++;
 }
 
-int pop_stack(stack *st)
+int pop_stack(Stack *st)
 {
     if (st->size == 0)
         return -1;
@@ -68,7 +68,7 @@ int pop_stack(stack *st)
     return item;
 }
 
-void print_stack(stack *st)
+void print_stack(Stack *st)
 {
     if (st == NULL)
         return;
@@ -83,7 +83,7 @@ void print_stack(stack *st)
     }
 }
 
-void free_stack(stack *st)
+void free_stack(Stack *st)
 {
     if (!st)
         return;
@@ -99,10 +99,10 @@ void free_stack(stack *st)
     free(st);
 }
 
-void st_set_color(stack *st, char color) { st->color = color; }
+void st_set_color(Stack *st, char color) { st->color = color; }
 
-char st_view_color(stack *st) { return st->color; }
+char st_view_color(Stack *st) { return st->color; }
 
-char st_view_top(stack *st) { return st->top->value; }
+char st_view_top(Stack *st) { return st->top->value; }
 
-int st_view_size(stack *st) { return st->size; }
+int st_view_size(Stack *st) { return st->size; }
