@@ -32,7 +32,7 @@ int insert_points(Board *board, PlayedHand *play, Player *player)
 }
 
 /* FALTA IMPLEMENTAR A PONTUACAO */
-void game_round(Board *board, Hand *hand, PlayedHand *play, Player *player)
+void game_round(Board *board, Hand *hand, Player *player)
 {
     int row = board->rows;
     int col = board->cols;
@@ -73,7 +73,7 @@ void game_round(Board *board, Hand *hand, PlayedHand *play, Player *player)
     int size = hand_size(hand);
 
     printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
-    play = create_played_hand(size);
+    PlayedHand *play = create_played_hand(size);
 
     do
     {
@@ -102,4 +102,6 @@ void game_round(Board *board, Hand *hand, PlayedHand *play, Player *player)
 
     printf("Pontuacao atual do jogador %s: %d\n", player->color, st_view_size(player->points));
     printf("\n");
+
+    free_played_hand(play);
 }

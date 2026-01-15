@@ -1,5 +1,4 @@
 #include "../include/board.h"
-#include "../include/hand.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,11 +8,12 @@ Board *create_board()
     int rows, cols;
 
     printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
+    printf("\nO numero de linhas e colunas devem ambos pares e iguais!\n");
     scanf("%d%d", &rows, &cols);
 
-    while (rows != cols || rows <= 0 || cols <= 0 || rows >= 10 || cols >= 10)
+    while (rows != cols || rows <= 0 || cols <= 0 || rows >= 10 || cols >= 10 || rows % 2 != 0 || cols % 2 != 0)
     {
-        printf("\nO numero de linhas e colunas do tabuleiro devem ser iguais!\n");
+        printf("\nInsira dimensoes validas!\n");
         scanf("%d %d", &rows, &cols);
     }
 
@@ -72,6 +72,7 @@ int init_board(Board *b)
                 j % 2 == 0 ? st_set_color(b->cells[i][j], 'b') : st_set_color(b->cells[i][j], 'r');
         }
     }
+    return 0;
 }
 
 /*  Essa funcao serve apenas para tratar eventuais erros de alocacao durante a criacao do tabuleiro,
@@ -115,7 +116,7 @@ int show_board(Board *b)
 
     printf("    ");
     for (int j = 0; j < b->cols; j++)
-        printf(" %zu  ", j + 1);
+        printf(" %d  ", j + 1);
     printf("\n");
 
     printf(BLACK "   +" RESET);
@@ -125,7 +126,7 @@ int show_board(Board *b)
 
     for (int i = 0; i < b->rows; i++)
     {
-        printf(" %zu", i + 1);
+        printf(" %d", i + 1);
         printf(BLACK " |" RESET);
 
         for (int j = 0; j < b->cols; j++)

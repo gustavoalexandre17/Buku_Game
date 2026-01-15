@@ -1,0 +1,3 @@
+/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir
+/home/gustavo/Projects/Buku_Game/build/CMakeFiles/edit_cache.dir
+/home/gustavo/Projects/Buku_Game/build/CMakeFiles/rebuild_cache.dir
