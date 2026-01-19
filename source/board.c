@@ -119,15 +119,15 @@ int show_board(Board *b)
         printf(" %d  ", j + 1);
     printf("\n");
 
-    printf(BLACK "   +" RESET);
+    printf(WHITE "   +" RESET);
     for (int j = 0; j < b->cols; j++)
-        printf(BLACK "---+" RESET);
+        printf(WHITE "---+" RESET);
     printf("\n");
 
     for (int i = 0; i < b->rows; i++)
     {
         printf(" %d", i + 1);
-        printf(BLACK " |" RESET);
+        printf(WHITE " |" RESET);
 
         for (int j = 0; j < b->cols; j++)
         {
@@ -141,13 +141,13 @@ int show_board(Board *b)
             {
                 color == 'r' ? printf(RED " %c" RESET, TOKEN) : printf(BLUE " %c" RESET, TOKEN);
             }
-            printf(BLACK " |" RESET);
+            printf(WHITE " |" RESET);
         }
         printf("\n");
 
-        printf(BLACK "   +" RESET);
+        printf(WHITE "   +" RESET);
         for (int j = 0; j < b->rows; j++)
-            printf(BLACK "---+" RESET);
+            printf(WHITE "---+" RESET);
         printf("\n");
     }
 

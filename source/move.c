@@ -18,12 +18,12 @@ PlayedHand *create_played_hand(int size)
 int validate_full_move(PlayedHand *ph, int boardSize)
 {
     if (!ph)
-        return 0;
+        return -1;
 
     for (int i = 0; i < ph->size; i++)
     {
         if (!validate_parcial_move(ph[i].row, ph[i].col, boardSize))
-            return 0;
+            return -1;
 
         else if (i != 0)
         {
@@ -61,13 +61,13 @@ int validate_full_move(PlayedHand *ph, int boardSize)
                         totalNeighbor--;
             }
             else
-                return 0;
+                return -1;
 
             if (totalNeighbor == 0)
-                return 0;
+                return -1;
         }
     }
-    return 1;
+    return 0;
 }
 
 int validate_parcial_move(int row, int col, int boardSize)

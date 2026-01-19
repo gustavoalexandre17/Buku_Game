@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: Buku_Game
-# Configurations: 
+# Configurations: Debug
 # =============================================================================
 
 #############################################
@@ -20,6 +20,11 @@
 
 ninja_required_version = 1.5
 
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
 # =============================================================================
 # Include auxiliary files.
 
@@ -44,57 +49,64 @@ cmake_ninja_workdir = /home/gustavo/Projects/Buku_Game/build/
 
 build cmake_object_order_depends_target_buku_game: phony || .
 
-build CMakeFiles/buku_game.dir/source/main.c.o: C_COMPILER__buku_game_unscanned_ /home/gustavo/Projects/Buku_Game/source/main.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/main.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/main.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/source/main.c.o.d
-  FLAGS = -std=gnu17 -Wall -Wextra -Wpedantic
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
   INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
   OBJECT_DIR = CMakeFiles/buku_game.dir
   OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/player.c.o: C_COMPILER__buku_game_unscanned_ /home/gustavo/Projects/Buku_Game/source/player.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/player.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/player.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/source/player.c.o.d
-  FLAGS = -std=gnu17 -Wall -Wextra -Wpedantic
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
   INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
   OBJECT_DIR = CMakeFiles/buku_game.dir
   OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/game.c.o: C_COMPILER__buku_game_unscanned_ /home/gustavo/Projects/Buku_Game/source/game.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/game.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/game.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/source/game.c.o.d
-  FLAGS = -std=gnu17 -Wall -Wextra -Wpedantic
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
   INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
   OBJECT_DIR = CMakeFiles/buku_game.dir
   OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/board.c.o: C_COMPILER__buku_game_unscanned_ /home/gustavo/Projects/Buku_Game/source/board.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/board.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/board.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/source/board.c.o.d
-  FLAGS = -std=gnu17 -Wall -Wextra -Wpedantic
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
   INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
   OBJECT_DIR = CMakeFiles/buku_game.dir
   OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/stack.c.o: C_COMPILER__buku_game_unscanned_ /home/gustavo/Projects/Buku_Game/source/stack.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/stack.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/stack.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/source/stack.c.o.d
-  FLAGS = -std=gnu17 -Wall -Wextra -Wpedantic
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
   INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
   OBJECT_DIR = CMakeFiles/buku_game.dir
   OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/hand.c.o: C_COMPILER__buku_game_unscanned_ /home/gustavo/Projects/Buku_Game/source/hand.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/hand.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/hand.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/source/hand.c.o.d
-  FLAGS = -std=gnu17 -Wall -Wextra -Wpedantic
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
   INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
   OBJECT_DIR = CMakeFiles/buku_game.dir
   OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/move.c.o: C_COMPILER__buku_game_unscanned_ /home/gustavo/Projects/Buku_Game/source/move.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/move.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/move.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/source/move.c.o.d
-  FLAGS = -std=gnu17 -Wall -Wextra -Wpedantic
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
   INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
   OBJECT_DIR = CMakeFiles/buku_game.dir
   OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
@@ -108,8 +120,10 @@ build CMakeFiles/buku_game.dir/source/move.c.o: C_COMPILER__buku_game_unscanned_
 #############################################
 # Link the executable /home/gustavo/Projects/Buku_Game/bin/buku_game
 
-build /home/gustavo/Projects/Buku_Game/bin/buku_game: C_EXECUTABLE_LINKER__buku_game_ CMakeFiles/buku_game.dir/source/main.c.o CMakeFiles/buku_game.dir/source/player.c.o CMakeFiles/buku_game.dir/source/game.c.o CMakeFiles/buku_game.dir/source/board.c.o CMakeFiles/buku_game.dir/source/stack.c.o CMakeFiles/buku_game.dir/source/hand.c.o CMakeFiles/buku_game.dir/source/move.c.o
+build /home/gustavo/Projects/Buku_Game/bin/buku_game: C_EXECUTABLE_LINKER__buku_game_Debug CMakeFiles/buku_game.dir/source/main.c.o CMakeFiles/buku_game.dir/source/player.c.o CMakeFiles/buku_game.dir/source/game.c.o CMakeFiles/buku_game.dir/source/board.c.o CMakeFiles/buku_game.dir/source/stack.c.o CMakeFiles/buku_game.dir/source/hand.c.o CMakeFiles/buku_game.dir/source/move.c.o
+  CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/link.d
+  FLAGS = -g
   LINK_FLAGS = -Wl,--dependency-file=CMakeFiles/buku_game.dir/link.d
   OBJECT_DIR = CMakeFiles/buku_game.dir
   POST_BUILD = :

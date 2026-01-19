@@ -7,6 +7,6 @@
 #include "../include/player.h"
 
 void game_round(Board *board, Hand *hand, Player *player);
-int insert_points(Board *board, PlayedHand *play, Player *player);
+int check_points(Board *board, Player *player1, Player *player2);
 
 #endif
