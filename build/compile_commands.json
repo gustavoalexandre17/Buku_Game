@@ -1,0 +1,44 @@
+[
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/main.c.o -c /home/gustavo/Projects/Buku_Game/source/main.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/main.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/main.c.o"
+},
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/player.c.o -c /home/gustavo/Projects/Buku_Game/source/player.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/player.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/player.c.o"
+},
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/game.c.o -c /home/gustavo/Projects/Buku_Game/source/game.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/game.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/game.c.o"
+},
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/board.c.o -c /home/gustavo/Projects/Buku_Game/source/board.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/board.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/board.c.o"
+},
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/stack.c.o -c /home/gustavo/Projects/Buku_Game/source/stack.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/stack.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/stack.c.o"
+},
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/hand.c.o -c /home/gustavo/Projects/Buku_Game/source/hand.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/hand.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/hand.c.o"
+},
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/move.c.o -c /home/gustavo/Projects/Buku_Game/source/move.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/move.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/move.c.o"
+}
+]

@@ -1,7 +1,6 @@
 #include "../include/board.h"
 #include "../include/game.h"
 #include "../include/hand.h"
-// #include "../include/move.h"
 #include "../include/player.h"
 #include <stdio.h>
 
@@ -19,7 +18,10 @@ int main()
     while (1)
     {
         game_round(board, hand, p1);
+        check_points(board, p1, p2);
+
         game_round(board, hand, p2);
+        check_points(board, p1, p2);
     }
 
     destroy_board(board);
