@@ -4,8 +4,7 @@
 #include "../include/player.h"
 #include <stdio.h>
 
-int main()
-{
+int main() {
     Board *board = create_board();
     Hand *hand = create_hand(view_board_size(board));
 
@@ -15,13 +14,15 @@ int main()
     init_board(board);
     show_board(board);
 
-    while (1)
-    {
+    while (1) {
+        // PROVISORIO
         game_round(board, hand, p1);
-        check_points(board, p1, p2);
+        printf("Pontuacao atual do jogador %s: %d\n", p1->color, st_view_size(p1->points));
+        printf("Pontuacao atual do jogador %s: %d\n", p2->color, st_view_size(p2->points));
 
         game_round(board, hand, p2);
-        check_points(board, p1, p2);
+        printf("Pontuacao atual do jogador %s: %d\n", p1->color, st_view_size(p1->points));
+        printf("Pontuacao atual do jogador %s: %d\n", p2->color, st_view_size(p2->points));
     }
 
     destroy_board(board);

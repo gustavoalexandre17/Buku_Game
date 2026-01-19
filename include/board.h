@@ -5,8 +5,7 @@
 #include "stack.h"
 #define TOKEN 'x'
 
-typedef struct
-{
+typedef struct {
     int rows;
     int cols;
     Stack ***cells;

@@ -1,6 +1,6 @@
 #Estilo base para C
 BasedOnStyle: LLVM
 IndentWidth: 4       # Espaços por nível de indentação
-BreakBeforeBraces: Allman  # Chaves em linha separada
+BreakBeforeBraces: Attach
 ColumnLimit: 120     # Limite de colunas
 
