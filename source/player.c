@@ -2,8 +2,7 @@
 #include "../include/stack.h"
 #include <stdlib.h>
 
-Player *create_player(char *color)
-{
+Player *create_player(char *color) {
     Player *new_player = (Player *)malloc(sizeof(Player));
     if (!new_player)
         return NULL;

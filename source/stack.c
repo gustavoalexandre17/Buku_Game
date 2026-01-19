@@ -5,21 +5,18 @@
 
 typedef struct node node;
 
-struct node
-{
+struct node {
     char value;
     node *next;
 };
 
-struct stack
-{
+struct stack {
     node *top;
     char color;
     int size;
 };
 
-Stack *create_stack()
-{
+Stack *create_stack() {
     Stack *new_stack = (Stack *)malloc(sizeof(Stack));
 
     if (!new_stack)
@@ -31,30 +28,26 @@ Stack *create_stack()
     return new_stack;
 }
 
-void insert_stack(Stack *st, char c)
-{
+void insert_stack(Stack *st, char c) {
     node *new_node = (node *)malloc(sizeof(node));
     if (!new_node)
         return;
 
     new_node->value = c;
 
-    if (st->size == 0)
-    {
+    if (st->size == 0) {
         st->top = new_node;
         new_node->next = NULL;
     }
 
-    else
-    {
+    else {
         new_node->next = st->top;
         st->top = new_node;
     }
     st->size++;
 }
 
-int pop_stack(Stack *st)
-{
+int pop_stack(Stack *st) {
     if (st->size == 0)
         return -1;
 
@@ -68,14 +61,12 @@ int pop_stack(Stack *st)
     return item;
 }
 
-void print_stack(Stack *st)
-{
+void print_stack(Stack *st) {
     if (st == NULL)
         return;
 
     node *aux = st->top;
-    while (aux != NULL)
-    {
+    while (aux != NULL) {
         printf("%d", aux->value);
         if (aux->next != NULL)
             printf(" -> ");
@@ -83,15 +74,13 @@ void print_stack(Stack *st)
     }
 }
 
-void free_stack(Stack *st)
-{
+void free_stack(Stack *st) {
     if (!st)
         return;
 
     node *aux = st->top;
 
-    while (aux)
-    {
+    while (aux) {
         node *to_free = aux;
         aux = aux->next;
         free(to_free);

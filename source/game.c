@@ -7,50 +7,41 @@
 #include <stdlib.h>
 #include <string.h>
 
-// PROXIMO PASSO: FUNCAO UPDATE SCORE
-int check_points(Board *board, Player *player1, Player *player2)
-{
-    if (!board || !player1 || !player2)
+int check_points(Board *board, Player *player) {
+    if (!board || !player)
         return -1;
 
-    for (int i = 0; i < board->rows; i++)
-    {
-        for (int j = 0; j < board->cols; j++)
-        {
+    for (int i = 0; i < board->rows; i++) {
+        for (int j = 0; j < board->cols; j++) {
             Stack *cell = board->cells[i][j];
             int value = st_view_size(cell);
 
-            if (value >= 3) // PROVISORIO - PARA TESTES
-            {
-                for (int k = 0; k < value; k++)
+            if (st_view_color(cell) == player->color[0]) {
+                if (value >= 3) // PROVISORIO - PARA TESTES
                 {
-                    pop_stack(cell);
-                    st_view_color(cell) == 'r' ? insert_stack(player1->points, 'O')
-                                               : insert_stack(player2->points, 'O');
+                    for (int k = 0; k < value; k++) {
+                        pop_stack(cell);
+                        insert_stack(player->points, 'O');
+                    }
                 }
             }
         }
     }
-    printf("Pontuacao atual do jogador %s: %d\n", player1->color, st_view_size(player1->points));
-    printf("Pontuacao atual do jogador %s: %d\n", player2->color, st_view_size(player2->points));
     return 0;
 }
 
-void game_round(Board *board, Hand *hand, Player *player)
-{
+void game_round(Board *board, Hand *hand, Player *player) {
     int row = board->rows;
     int col = board->cols;
     int playedRow, playedCol;
 
     printf("\nVez do jogador %s:\n", player->color);
 
-    if (!strcmp(player->color, "vermelho"))
-    {
+    if (!strcmp(player->color, "vermelho")) {
         printf("Selecione a linha (1 a %d):\n", row);
         scanf("%d", &playedRow);
 
-        while (playedRow < 1 || playedRow > row)
-        {
+        while (playedRow < 1 || playedRow > row) {
             printf("Linha invalida, por favor, digite uma linha valida!\n");
             scanf("%d", &playedRow);
         }
@@ -58,13 +49,11 @@ void game_round(Board *board, Hand *hand, Player *player)
         pick_row(hand, board, playedRow - 1, board->cols);
     }
 
-    else if (!strcmp(player->color, "azul"))
-    {
+    else if (!strcmp(player->color, "azul")) {
         printf("Selecione a coluna (1 a %d):\n", col);
         scanf("%d", &playedCol);
 
-        while (playedCol < 1 || playedCol > row)
-        {
+        while (playedCol < 1 || playedCol > row) {
             printf("Coluna invalida, por favor, digite uma coluna valida!\n");
             scanf("%d", &playedCol);
         }
@@ -82,10 +71,8 @@ void game_round(Board *board, Hand *hand, Player *player)
     PlayedHand *play = create_played_hand(size);
 
     int valid = -1;
-    while (valid == -1)
-    {
-        for (int i = 0; i < hand_size(hand); i++)
-        {
+    while (valid == -1) {
+        for (int i = 0; i < hand_size(hand); i++) {
             int tempRow, tempCol;
             printf("\nDigite a linha da %d° jogada: ", i + 1);
             scanf("%d", &tempRow);
@@ -104,6 +91,7 @@ void game_round(Board *board, Hand *hand, Player *player)
 
     printf("\nJogada válida\n");
     put_hand(hand, board, play);
+    check_points(board, player);
 
     system("clear");
     show_board(board);

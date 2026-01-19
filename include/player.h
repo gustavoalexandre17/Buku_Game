@@ -3,8 +3,7 @@
 
 #include "../include/stack.h"
 
-typedef struct
-{
+typedef struct {
     Stack *points;
     char *color;
 } Player;
