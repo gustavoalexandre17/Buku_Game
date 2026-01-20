@@ -32,7 +32,23 @@ int check_points(Board *board, Player *player) {
     return 0;
 }
 
-void game_round(Board *board, Hand *hand, Player *player, int gameOver) {
+void withdrawal(Board *board, Player *loser, Player *winner) {
+    for (int i = 0; i < board->rows; i++) {
+        for (int j = 0; j < board->cols; j++) {
+            Stack *cell = board->cells[i][j];
+            int value = st_view_size(cell);
+
+            if (st_view_color(cell) == loser->color[0]) {
+                for (int i = 0; i < value; i++) {
+                    pop_stack(cell);
+                    insert_stack(winner->points, 'O');
+                }
+            }
+        }
+    }
+}
+
+int game_round(Board *board, Hand *hand, Player *player) {
     int row = board->rows;
     int col = board->cols;
     int playedRow, playedCol;

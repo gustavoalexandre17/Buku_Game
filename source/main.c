@@ -14,18 +14,17 @@ int main() {
     init_board(board);
     show_board(board);
 
-    int gameOver = 0;
     while (1) {
-        int first_play = game_round(board, hand, p1, gameOver);
+        int first_play = game_round(board, hand, p1);
 
         switch (first_play) {
         case 1:
             // desistencia
-            // withdrawal();
+            withdrawal(board, p1, p2);
             break;
 
         case 2:
-            // game-over padrao
+            goto exit;
             break;
 
         default:
@@ -35,9 +34,27 @@ int main() {
             break;
         }
 
-        int second_play = game_round(board, hand, p2, gameOver);
-        printf("Pontuacao atual do jogador %s: %d\n", p1->color, st_view_size(p1->points));
-        printf("Pontuacao atual do jogador %s: %d\n", p2->color, st_view_size(p2->points));
+        int second_play = game_round(board, hand, p2);
+
+        switch (second_play) {
+        case 1:
+            // desistencia
+            withdrawal(board, p2, p1);
+            break;
+
+        case 2:
+            goto exit;
+            break;
+
+        default:
+            // continua o jogo
+            printf("Pontuacao atual do jogador %s: %d\n", p1->color, st_view_size(p1->points));
+            printf("Pontuacao atual do jogador %s: %d\n", p2->color, st_view_size(p2->points));
+            break;
+        }
+
+    exit:
+        break;
     }
 
     destroy_board(board);

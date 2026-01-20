@@ -1,9 +1,11 @@
 # ninja log v7
-1	152	1768841022249215483	CMakeFiles/buku_game.dir/source/main.c.o	6f7c90c93b565a5e
+6	113	1768926251935970685	CMakeFiles/buku_game.dir/source/main.c.o	6f7c90c93b565a5e
 1	172	1768841022250051335	CMakeFiles/buku_game.dir/source/player.c.o	4c12d024f467c03
 2	206	1768841022250813136	CMakeFiles/buku_game.dir/source/stack.c.o	fcbe641a389828cc
 7	179	1768841022255298655	CMakeFiles/buku_game.dir/source/hand.c.o	676c30fd398110cd
-1	147	1768841022250333251	CMakeFiles/buku_game.dir/source/game.c.o	7730f9db2509ce8f
+1	133	1768926349189052569	CMakeFiles/buku_game.dir/source/game.c.o	7730f9db2509ce8f
 2	214	1768841022250582035	CMakeFiles/buku_game.dir/source/board.c.o	2e0601ac5856a18d
 148	288	1768841022396217473	CMakeFiles/buku_game.dir/source/move.c.o	68cd4fb3ba922e63
-288	328	1768841022536219367	/home/gustavo/Projects/Buku_Game/bin/buku_game	2223088177ce08ae
+133	231	1768926349321059724	/home/gustavo/Projects/Buku_Game/bin/buku_game	2223088177ce08ae
+2	75	1768926453519128063	CMakeFiles/buku_game.dir/source/game.c.o	7730f9db2509ce8f
+75	120	1768926453592131233	/home/gustavo/Projects/Buku_Game/bin/buku_game	2223088177ce08ae
