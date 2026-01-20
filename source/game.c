@@ -27,10 +27,12 @@ int check_points(Board *board, Player *player) {
             }
         }
     }
+    if (st_view_size(player->points) > 32)
+        return 1;
     return 0;
 }
 
-void game_round(Board *board, Hand *hand, Player *player) {
+void game_round(Board *board, Hand *hand, Player *player, int gameOver) {
     int row = board->rows;
     int col = board->cols;
     int playedRow, playedCol;
@@ -66,6 +68,8 @@ void game_round(Board *board, Hand *hand, Player *player) {
     show_board(board);
 
     int size = hand_size(hand);
+    if (size == 0)
+        return 1;
 
     printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
     PlayedHand *play = create_played_hand(size);
@@ -91,7 +95,9 @@ void game_round(Board *board, Hand *hand, Player *player) {
 
     printf("\nJogada válida\n");
     put_hand(hand, board, play);
-    check_points(board, player);
+    int gameOver = check_points(board, player);
+    if (gameOver == 1)
+        return 2;
 
     system("clear");
     show_board(board);
@@ -102,4 +108,6 @@ void game_round(Board *board, Hand *hand, Player *player) {
 
     printf("\n");
     free_played_hand(play);
+
+    return 0;
 }
