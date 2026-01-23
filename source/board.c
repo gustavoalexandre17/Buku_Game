@@ -10,6 +10,7 @@ Board *create_board() {
     printf("\nO numero de linhas e colunas devem ambos pares e iguais!\n");
     scanf("%d%d", &rows, &cols);
 
+    // ERRADO
     while (rows != cols || rows <= 0 || cols <= 0 || rows >= 10 || cols >= 10 || rows % 2 != 0 || cols % 2 != 0) {
         printf("\nInsira dimensoes validas!\n");
         scanf("%d %d", &rows, &cols);

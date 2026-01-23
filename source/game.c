@@ -17,8 +17,7 @@ int check_points(Board *board, Player *player) {
             int value = st_view_size(cell);
 
             if (st_view_color(cell) == player->color[0]) {
-                if (value >= 3) // PROVISORIO - PARA TESTES
-                {
+                if (value >= 3) {
                     for (int k = 0; k < value; k++) {
                         pop_stack(cell);
                         insert_stack(player->points, 'O');
@@ -32,17 +31,15 @@ int check_points(Board *board, Player *player) {
     return 0;
 }
 
-void withdrawal(Board *board, Player *loser, Player *winner) {
+void withdrawal(Board *board, Player *winner) {
     for (int i = 0; i < board->rows; i++) {
         for (int j = 0; j < board->cols; j++) {
             Stack *cell = board->cells[i][j];
             int value = st_view_size(cell);
 
-            if (st_view_color(cell) == loser->color[0]) {
-                for (int i = 0; i < value; i++) {
-                    pop_stack(cell);
-                    insert_stack(winner->points, 'O');
-                }
+            for (int k = 0; i < value; k++) {
+                pop_stack(cell);
+                insert_stack(winner->points, 'O');
             }
         }
     }
