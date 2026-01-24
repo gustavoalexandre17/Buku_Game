@@ -26,7 +26,8 @@ int main() {
             break;
 
         // continua o jogo
-        printf("Pontuacao atual do jogador %s: %d\n", p1->color, st_view_size(p1->points));
+        printf("Pontuacao atual dos jogadores:\n %s: %d\n %s : %d\n", p1->color, st_view_size(p1->points), p2->color,
+               st_view_size(p2->points));
 
         int second_play = game_round(board, hand, p2);
 
@@ -36,7 +37,8 @@ int main() {
         else if (second_play == 2)
             break;
 
-        printf("Pontuacao atual do jogador %s: %d\n", p2->color, st_view_size(p2->points));
+        printf("Pontuacao atual dos jogadores:\n %s: %d\n %s : %d\n", p1->color, st_view_size(p1->points), p2->color,
+               st_view_size(p2->points));
     }
 
     destroy_board(board);

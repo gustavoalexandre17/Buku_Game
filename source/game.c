@@ -37,12 +37,13 @@ void withdrawal(Board *board, Player *winner) {
             Stack *cell = board->cells[i][j];
             int value = st_view_size(cell);
 
-            for (int k = 0; i < value; k++) {
+            for (int k = 0; k < value; k++) {
                 pop_stack(cell);
                 insert_stack(winner->points, 'O');
             }
         }
     }
+    show_board(board);
 }
 
 int game_round(Board *board, Hand *hand, Player *player) {
