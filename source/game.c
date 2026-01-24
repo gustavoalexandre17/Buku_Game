@@ -17,8 +17,7 @@ int check_points(Board *board, Player *player) {
             int value = st_view_size(cell);
 
             if (st_view_color(cell) == player->color[0]) {
-                if (value >= 3) // PROVISORIO - PARA TESTES
-                {
+                if (value >= 3) {
                     for (int k = 0; k < value; k++) {
                         pop_stack(cell);
                         insert_stack(player->points, 'O');
@@ -27,10 +26,26 @@ int check_points(Board *board, Player *player) {
             }
         }
     }
+    if (st_view_size(player->points) > 32)
+        return 1;
     return 0;
 }
 
-void game_round(Board *board, Hand *hand, Player *player) {
+void withdrawal(Board *board, Player *winner) {
+    for (int i = 0; i < board->rows; i++) {
+        for (int j = 0; j < board->cols; j++) {
+            Stack *cell = board->cells[i][j];
+            int value = st_view_size(cell);
+
+            for (int k = 0; i < value; k++) {
+                pop_stack(cell);
+                insert_stack(winner->points, 'O');
+            }
+        }
+    }
+}
+
+int game_round(Board *board, Hand *hand, Player *player) {
     int row = board->rows;
     int col = board->cols;
     int playedRow, playedCol;
@@ -66,6 +81,8 @@ void game_round(Board *board, Hand *hand, Player *player) {
     show_board(board);
 
     int size = hand_size(hand);
+    if (size == 0)
+        return 1;
 
     printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
     PlayedHand *play = create_played_hand(size);
@@ -91,7 +108,9 @@ void game_round(Board *board, Hand *hand, Player *player) {
 
     printf("\nJogada válida\n");
     put_hand(hand, board, play);
-    check_points(board, player);
+    int gameOver = check_points(board, player);
+    if (gameOver == 1)
+        return 2;
 
     system("clear");
     show_board(board);
@@ -102,4 +121,6 @@ void game_round(Board *board, Hand *hand, Player *player) {
 
     printf("\n");
     free_played_hand(play);
+
+    return 0;
 }
