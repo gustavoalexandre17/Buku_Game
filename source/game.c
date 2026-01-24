@@ -26,9 +26,52 @@ int check_points(Board *board, Player *player) {
             }
         }
     }
-    if (st_view_size(player->points) > 32)
+    int half_points = (board->rows * board->cols) / 2;
+    if (st_view_size(player->points) > half_points) {
         return 1;
+        printf("Fim de jogo por pontuacao, o jogador %s ganhou com %d pontos!\n", player->color, player->points);
+    }
     return 0;
+}
+
+int allSingletons(Board *board) {
+    for (int i = 0; i < board->rows; i++) {
+        for (int j = 0; j < board->cols; j++) {
+            Stack *cell = board->cells[i][j];
+            int value = st_view_size(cell);
+
+            if (value != 1)
+                return 0;
+        }
+    }
+    return 1;
+}
+
+Player *get_winner(Player *p1, Player *p2) {
+    Player *winner;
+
+    if (st_view_size(p1->points) > st_view_size(p2->points))
+        winner = p1;
+    else
+        winner = p2;
+
+    return winner;
+}
+
+void singletonsEndGame(Board *board, Player *p1, Player *p2) {
+    for (int i = 0; i < board->rows; i++) {
+        for (int j = 0; j < board->cols; j++) {
+            Stack *cell = board->cells[i][j];
+            int value = st_view_size(cell);
+
+            for (int k = 0; k < value; k++) {
+                pop_stack(cell);
+                st_view_color(cell) == 'v' ? insert_stack(p1->points, 'O') : insert_stack(p2->points, 'O');
+            }
+        }
+    }
+    Player *winner = get_winner(p1, p2);
+    printf("Fim de jogo por singlestons, o jogador %s ganhou com %d pontos!\n", winner->color, winner->points);
 }
 
 void withdrawal(Board *board, Player *winner) {
@@ -43,13 +86,20 @@ void withdrawal(Board *board, Player *winner) {
             }
         }
     }
+    system("clear");
     show_board(board);
+    int points = st_view_size(winner->points);
+    printf("Fim de jogo por desistencia, o jogador %s ganhou com %d pontos!\n", winner->color, points);
 }
 
 int game_round(Board *board, Hand *hand, Player *player) {
     int row = board->rows;
     int col = board->cols;
     int playedRow, playedCol;
+
+    // fim de jogo por singletons
+    if (board->turns > 1 && allSingletons(board))
+        return 1;
 
     printf("\nVez do jogador %s:\n", player->color);
 
@@ -82,8 +132,10 @@ int game_round(Board *board, Hand *hand, Player *player) {
     show_board(board);
 
     int size = hand_size(hand);
+
+    // fim de jogo por desistencia
     if (size == 0)
-        return 1;
+        return 2;
 
     printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
     PlayedHand *play = create_played_hand(size);
@@ -110,8 +162,9 @@ int game_round(Board *board, Hand *hand, Player *player) {
     printf("\nJogada válida\n");
     put_hand(hand, board, play);
     int gameOver = check_points(board, player);
+    // fim de jogo por pontos
     if (gameOver == 1)
-        return 2;
+        return 3;
 
     system("clear");
     show_board(board);
@@ -122,6 +175,8 @@ int game_round(Board *board, Hand *hand, Player *player) {
 
     printf("\n");
     free_played_hand(play);
+    board->turns++;
 
+    // continua normalmente
     return 0;
 }

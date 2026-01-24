@@ -17,13 +17,22 @@ int main() {
     while (1) {
         int first_play = game_round(board, hand, p1);
 
-        if (first_play == 1)
+        if (first_play == 1) {
+            // fim de jogo por singletons
+            singletonsEndGame(board, p1, p2);
+            break;
+        }
+
+        else if (first_play == 2) {
             // desistencia
             withdrawal(board, p2);
+            break;
+        }
 
-        else if (first_play == 2)
+        else if (first_play == 3) {
             // gameover padrao
             break;
+        }
 
         // continua o jogo
         printf("Pontuacao atual dos jogadores:\n %s: %d\n %s : %d\n", p1->color, st_view_size(p1->points), p2->color,
@@ -31,11 +40,22 @@ int main() {
 
         int second_play = game_round(board, hand, p2);
 
-        if (second_play == 1)
-            withdrawal(board, p1);
-
-        else if (second_play == 2)
+        if (second_play == 1) {
+            // fim de jogo por singletons
+            singletonsEndGame(board, p1, p2);
             break;
+        }
+
+        else if (second_play == 2) {
+            // desistencia
+            withdrawal(board, p2);
+            break;
+        }
+
+        else if (second_play == 3) {
+            // gameover padrao
+            break;
+        }
 
         printf("Pontuacao atual dos jogadores:\n %s: %d\n %s : %d\n", p1->color, st_view_size(p1->points), p2->color,
                st_view_size(p2->points));

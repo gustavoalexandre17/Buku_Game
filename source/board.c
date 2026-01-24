@@ -27,6 +27,7 @@ Board *create_board() {
 
     new_board->rows = rows;
     new_board->cols = cols;
+    new_board->turns = 1;
     new_board->cells = (Stack ***)malloc(rows * sizeof(Stack **));
 
     if (!new_board->cells)
