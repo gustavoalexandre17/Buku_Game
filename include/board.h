@@ -8,6 +8,7 @@
 typedef struct {
     int rows;
     int cols;
+    int turns;
     Stack ***cells;
 } Board;
 

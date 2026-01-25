@@ -6,6 +6,7 @@
 Board *create_board() {
     int rows, cols;
 
+    system("clear");
     printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
     printf("\nO numero de linhas e colunas devem ambos pares e iguais!\n");
     scanf("%d%d", &rows, &cols);
@@ -26,6 +27,7 @@ Board *create_board() {
 
     new_board->rows = rows;
     new_board->cols = cols;
+    new_board->turns = 1;
     new_board->cells = (Stack ***)malloc(rows * sizeof(Stack **));
 
     if (!new_board->cells)
