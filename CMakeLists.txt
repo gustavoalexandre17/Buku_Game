@@ -15,6 +15,7 @@ add_executable(buku_game
     source/stack.c
     source/hand.c
     source/move.c
+    source/colors.c
 )
 
 # Diretório dos headers

@@ -1,4 +1,5 @@
 #include "../include/board.h"
+#include "../include/player.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,7 +7,7 @@
 Board *create_board() {
     int rows, cols;
 
-    system("clear");
+    // system("clear");
     printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
     printf("\nO numero de linhas e colunas devem ambos pares e iguais!\n");
     scanf("%d%d", &rows, &cols);
@@ -52,7 +53,7 @@ Board *create_board() {
     return new_board;
 }
 
-int init_board(Board *b) {
+int init_board(Board *b, Player *p1, Player *p2) {
     if (!b)
         return -1;
 
@@ -61,9 +62,9 @@ int init_board(Board *b) {
             insert_stack(b->cells[i][j], 'O');
 
             if (i % 2 == 0)
-                j % 2 == 0 ? st_set_color(b->cells[i][j], 'v') : st_set_color(b->cells[i][j], 'a');
+                j % 2 == 0 ? st_set_color(b->cells[i][j], p2->color[0]) : st_set_color(b->cells[i][j], p1->color[0]);
             else
-                j % 2 == 0 ? st_set_color(b->cells[i][j], 'a') : st_set_color(b->cells[i][j], 'v');
+                j % 2 == 0 ? st_set_color(b->cells[i][j], p1->color[0]) : st_set_color(b->cells[i][j], p2->color[0]);
         }
     }
     return 0;
@@ -99,7 +100,7 @@ int destroy_board(Board *b) {
     return 0;
 }
 
-int show_board(Board *b) {
+int show_board(Board *b, Colors *colors) {
     if (!b)
         return -1;
 
@@ -108,30 +109,31 @@ int show_board(Board *b) {
         printf(" %d  ", j + 1);
     printf("\n");
 
-    printf(WHITE "   +" RESET);
+    printf("%s   +" RESET, colors->colorBoard);
     for (int j = 0; j < b->cols; j++)
-        printf(WHITE "---+" RESET);
+        printf("%s---+" RESET, colors->colorBoard);
     printf("\n");
 
     for (int i = 0; i < b->rows; i++) {
         printf(" %d", i + 1);
-        printf(WHITE " |" RESET);
+        printf("%s |" RESET, colors->colorBoard);
 
         for (int j = 0; j < b->cols; j++) {
-            char color = st_view_color(b->cells[i][j]);
+            // char color = st_view_color(b->cells[i][j]);
             if (st_view_size(b->cells[i][j])) {
-                color == 'v' ? printf(RED " %d" RESET, st_view_size(b->cells[i][j]))
-                             : printf(BLUE " %d" RESET, st_view_size(b->cells[i][j]));
+                (i + j) % 2 == 0 ? printf("%s %d" RESET, colors->colorDarkSquaresId, st_view_size(b->cells[i][j]))
+                                 : printf("%s %d" RESET, colors->colorLightSquaresId, st_view_size(b->cells[i][j]));
             } else {
-                color == 'v' ? printf(RED " %c" RESET, TOKEN) : printf(BLUE " %c" RESET, TOKEN);
+                (i + j) % 2 == 0 ? printf("%s %c" RESET, colors->colorDarkSquaresId, TOKEN)
+                                 : printf("%s %c" RESET, colors->colorLightSquaresId, TOKEN);
             }
-            printf(WHITE " |" RESET);
+            printf("%s |" RESET, colors->colorBoard);
         }
         printf("\n");
 
-        printf(WHITE "   +" RESET);
+        printf("%s   +" RESET, colors->colorBoard);
         for (int j = 0; j < b->rows; j++)
-            printf(WHITE "---+" RESET);
+            printf("%s---+" RESET, colors->colorBoard);
         printf("\n");
     }
 

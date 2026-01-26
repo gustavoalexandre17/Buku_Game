@@ -1,21 +1,27 @@
 #include "../include/board.h"
+#include "../include/colors.h"
 #include "../include/game.h"
 #include "../include/hand.h"
 #include "../include/player.h"
 #include <stdio.h>
 
 int main() {
+    Colors *colors = create_colors();
+
+    choose_colors(colors);
+
     Board *board = create_board();
     Hand *hand = create_hand(view_board_size(board));
 
-    Player *p1 = create_player("vermelho");
-    Player *p2 = create_player("azul");
+    Player *p1 = create_player(colors->colorDarkSquares);
+    Player *p2 = create_player(colors->colorLightSquares);
 
-    init_board(board);
-    show_board(board);
+    init_board(board, p1, p2);
+    show_board(board, colors);
 
+    printf("");
     while (1) {
-        int first_play = game_round(board, hand, p1);
+        int first_play = game_round(board, hand, p1, colors);
 
         if (first_play == 1) {
             // fim de jogo por singletons
@@ -25,7 +31,7 @@ int main() {
 
         else if (first_play == 2) {
             // desistencia
-            withdrawal(board, p2);
+            withdrawal(board, p2, colors);
             break;
         }
 
@@ -38,7 +44,7 @@ int main() {
         printf("Pontuacao atual dos jogadores:\n %s: %d\n %s : %d\n", p1->color, st_view_size(p1->points), p2->color,
                st_view_size(p2->points));
 
-        int second_play = game_round(board, hand, p2);
+        int second_play = game_round(board, hand, p2, colors);
 
         if (second_play == 1) {
             // fim de jogo por singletons
@@ -48,7 +54,7 @@ int main() {
 
         else if (second_play == 2) {
             // desistencia
-            withdrawal(board, p2);
+            withdrawal(board, p2, colors);
             break;
         }
 

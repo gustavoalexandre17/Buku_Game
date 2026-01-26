@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include "colors.h"
+#include "player.h"
 #include "stack.h"
 #define TOKEN 'x'
 
@@ -15,9 +16,9 @@ typedef struct {
 Board *create_board();
 int destroy_board(Board *b);
 int destroy_board_partial(Board *b, int rows_filled, int cols_filled);
-int init_board(Board *b);
+int init_board(Board *b, Player *p1, Player *p2);
 int fill_board(Board *b);
-int show_board(Board *b);
+int show_board(Board *b, Colors *colors);
 int view_board_size(Board *b);
 
 #endif

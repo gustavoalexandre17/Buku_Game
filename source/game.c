@@ -74,7 +74,7 @@ void singletonsEndGame(Board *board, Player *p1, Player *p2) {
     printf("Fim de jogo por singlestons, o jogador %s ganhou com %d pontos!\n", winner->color, winner->points);
 }
 
-void withdrawal(Board *board, Player *winner) {
+void withdrawal(Board *board, Player *winner, Colors *colors) {
     for (int i = 0; i < board->rows; i++) {
         for (int j = 0; j < board->cols; j++) {
             Stack *cell = board->cells[i][j];
@@ -87,12 +87,12 @@ void withdrawal(Board *board, Player *winner) {
         }
     }
     system("clear");
-    show_board(board);
+    show_board(board, colors);
     int points = st_view_size(winner->points);
     printf("Fim de jogo por desistencia, o jogador %s ganhou com %d pontos!\n", winner->color, points);
 }
 
-int game_round(Board *board, Hand *hand, Player *player) {
+int game_round(Board *board, Hand *hand, Player *player, Colors *colors) {
     int row = board->rows;
     int col = board->cols;
     int playedRow, playedCol;
@@ -129,7 +129,7 @@ int game_round(Board *board, Hand *hand, Player *player) {
 
     printf("\nEstado atual:\n");
     system("clear");
-    show_board(board);
+    show_board(board, colors);
 
     int size = hand_size(hand);
 
@@ -155,7 +155,7 @@ int game_round(Board *board, Hand *hand, Player *player) {
 
             valid = validate_full_move(play, row);
             system("clear");
-            show_board(board);
+            show_board(board, colors);
         }
     }
 
@@ -167,7 +167,7 @@ int game_round(Board *board, Hand *hand, Player *player) {
         return 3;
 
     system("clear");
-    show_board(board);
+    show_board(board, colors);
 
     printf("Jogada realizada -> ");
     for (int i = 0; i < size; i++)
@@ -179,4 +179,64 @@ int game_round(Board *board, Hand *hand, Player *player) {
 
     // continua normalmente
     return 0;
+}
+
+int choose_colors(Colors *colors) {
+    if (!colors)
+        return 0;
+
+    char *curr = "light_squares";
+
+    char *nameColors[] = {"branco",       "cinza", "vermelho",   "laranja",     "amarelo", "verde_claro",
+                          "verde_escuro", "ciano", "azul_claro", "azul_escuro", "magenta", "rosa"};
+
+    char *nameColorsId[] = {WHITE, GRAY, RED, ORANGE, YELLOW, LGREEN, GREEN, CYAN, LBLUE, BLUE, MAGENTA, ROSE};
+
+    for (int i = 0; i < 3; i++) {
+        int numColor;
+
+        system("clear");
+
+        if (strcmp(curr, "light_squares") == 0) {
+            printf("Selecione a cor dos quadrados de cor clara pelo seu id: \n");
+        } else if (strcmp(curr, "dark_squares") == 0) {
+            printf("Selecione a cor dos quadrados de cor escura pelo seu id: \n");
+        } else if (strcmp(curr, "board") == 0) {
+            printf("Selecione a cor do tabulero pelo seu id: \n");
+        }
+
+        printf(WHITE "1 - Branco\n" RESET);
+        printf(GRAY "2 - Cinza\n" RESET);
+        printf(RED "3 - Vermelho\n" RESET);
+        printf(ORANGE "4 - Laranja\n" RESET);
+        printf(YELLOW "5 - Amarelo\n" RESET);
+        printf(LGREEN "6 - Verde claro\n" RESET);
+        printf(GREEN "7 - Verde escuro\n" RESET);
+        printf(CYAN "8 - Ciano\n" RESET);
+        printf(LBLUE "9 - Azul claro\n" RESET);
+        printf(BLUE "10 - Azul escuro\n" RESET);
+        printf(MAGENTA "11 - Magenta\n" RESET);
+        printf(ROSE "12 - Rosa\n" RESET);
+
+        scanf("%d", &numColor);
+
+        while (numColor < 1 || numColor > 12) {
+            printf("Cor inválida, selecione um id válido");
+            scanf("%d", &numColor);
+        }
+
+        if (strcmp(curr, "light_squares") == 0) {
+            colors->colorLightSquares = nameColors[numColor - 1];
+            colors->colorLightSquaresId = nameColorsId[numColor - 1];
+            curr = "dark_squares";
+        } else if (strcmp(curr, "dark_squares") == 0) {
+            colors->colorDarkSquares = nameColors[numColor - 1];
+            colors->colorDarkSquaresId = nameColorsId[numColor - 1];
+            curr = "board";
+        } else if (strcmp(curr, "board") == 0) {
+            colors->colorBoard = nameColorsId[numColor - 1];
+        }
+    }
+
+    return 1;
 }
