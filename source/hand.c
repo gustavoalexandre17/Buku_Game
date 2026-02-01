@@ -3,7 +3,7 @@
 #include "../include/stack.h"
 #include <stdlib.h>
 
-Hand *create_hand(int board_size) {
+Hand *create_hand() {
     Hand *newHand = (Hand *)malloc(sizeof(Hand));
 
     if (!newHand)
@@ -11,8 +11,8 @@ Hand *create_hand(int board_size) {
 
     newHand->pieces = create_stack();
 
-    if (board_size % 2 != 0)
-        insert_stack(newHand->pieces, 'O');
+    insert_stack(newHand->pieces, 'O');
+
     return newHand;
 }
 

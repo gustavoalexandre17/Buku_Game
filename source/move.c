@@ -14,11 +14,11 @@ PlayedHand *create_played_hand(int size) {
 }
 
 /*Passievel de refatoracao*/
-int validate_full_move(PlayedHand *ph, int boardSize) {
+int validate_full_move(PlayedHand *ph, int boardSize, int atual_size) {
     if (!ph)
         return -1;
 
-    for (int i = 0; i < ph->size; i++) {
+    for (int i = 0; i < atual_size; i++) {
         if (!validate_parcial_move(ph[i].row, ph[i].col, boardSize))
             return -1;
 
@@ -65,7 +65,7 @@ int validate_full_move(PlayedHand *ph, int boardSize) {
 }
 
 int validate_parcial_move(int row, int col, int boardSize) {
-    if (col < 0 || row < 0 || col > boardSize || row > boardSize)
+    if (col < 0 || row < 0 || col >= boardSize || row >= boardSize)
         return 0;
 
     return 1;

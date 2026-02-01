@@ -29,7 +29,8 @@ int check_points(Board *board, Player *player) {
     int half_points = (board->rows * board->cols) / 2;
     if (st_view_size(player->points) > half_points) {
         return 1;
-        printf("Fim de jogo por pontuacao, o jogador %s ganhou com %d pontos!\n", player->color, player->points);
+        printf("Fim de jogo por pontuacao, o jogador %s ganhou com %d pontos!\n", player->color,
+               st_view_size(player->points));
     }
     return 0;
 }
@@ -103,7 +104,7 @@ int game_round(Board *board, Hand *hand, Player *player, Colors *colors) {
 
     printf("\nVez do jogador %s:\n", player->color);
 
-    if (!strcmp(player->color, "vermelho")) {
+    if (!strcmp(player->color, colors->colorLightSquares)) {
         printf("Selecione a linha (1 a %d):\n", row);
         scanf("%d", &playedRow);
 
@@ -115,7 +116,7 @@ int game_round(Board *board, Hand *hand, Player *player, Colors *colors) {
         pick_row(hand, board, playedRow - 1, board->cols);
     }
 
-    else if (!strcmp(player->color, "azul")) {
+    else if (!strcmp(player->color, colors->colorDarkSquares)) {
         printf("Selecione a coluna (1 a %d):\n", col);
         scanf("%d", &playedCol);
 
@@ -153,7 +154,7 @@ int game_round(Board *board, Hand *hand, Player *player, Colors *colors) {
             play[i].row = tempRow - 1;
             play[i].col = tempCol - 1;
 
-            valid = validate_full_move(play, row);
+            valid = validate_full_move(play, row, i + 1);
             system("clear");
             show_board(board, colors);
         }
@@ -171,7 +172,7 @@ int game_round(Board *board, Hand *hand, Player *player, Colors *colors) {
 
     printf("Jogada realizada -> ");
     for (int i = 0; i < size; i++)
-        printf("{%d,%d} ", play[i].row, play[i].col);
+        printf("{%d,%d} ", play[i].row + 1, play[i].col + 1);
 
     printf("\n");
     free_played_hand(play);
@@ -198,9 +199,9 @@ int choose_colors(Colors *colors) {
         system("clear");
 
         if (strcmp(curr, "light_squares") == 0) {
-            printf("Selecione a cor dos quadrados de cor clara pelo seu id: \n");
+            printf("Selecione a cor do primeiro jogador pelo seu id: \n");
         } else if (strcmp(curr, "dark_squares") == 0) {
-            printf("Selecione a cor dos quadrados de cor escura pelo seu id: \n");
+            printf("Selecione a cor do segundo jogador pelo seu id: \n");
         } else if (strcmp(curr, "board") == 0) {
             printf("Selecione a cor do tabulero pelo seu id: \n");
         }

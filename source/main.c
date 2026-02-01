@@ -11,10 +11,10 @@ int main() {
     choose_colors(colors);
 
     Board *board = create_board();
-    Hand *hand = create_hand(view_board_size(board));
+    Hand *hand = create_hand();
 
-    Player *p1 = create_player(colors->colorDarkSquares);
-    Player *p2 = create_player(colors->colorLightSquares);
+    Player *p1 = create_player(colors->colorLightSquares);
+    Player *p2 = create_player(colors->colorDarkSquares);
 
     init_board(board, p1, p2);
     show_board(board, colors);
@@ -60,6 +60,7 @@ int main() {
 
         else if (second_play == 3) {
             // gameover padrao
+            printf("ai\n");
             break;
         }
 
