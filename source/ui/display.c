@@ -1,4 +1,5 @@
 #include "domain/board.h"
+#include "domain/player.h"
 #include "ui/display.h"
 
 int show_board(Board *b) {
@@ -38,4 +39,16 @@ int show_board(Board *b) {
     }
 
     return 0;
+}
+
+void display_turn_start(Player* player) {
+    printf("\nVez do jogador %s:\n", player->color);
+}
+
+void display_hand_size(int size) {
+    printf("\nO tamanho da mao e de: %d\n", size);
+}
+
+void display_move_valid() {
+    printf("\nJogada válida\n");
 }
