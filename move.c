@@ -1,4 +1,4 @@
-#include "../include/move.h"
+#include "include/move.h"
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,8 +1,8 @@
-#include "../include/game.h"
-#include "../include/board.h"
-#include "../include/hand.h"
+#include "domain/game.h"
+#include "domain/board.h"
+#include "domain/hand.h"
 #include "../include/move.h"
-#include "../include/player.h"
+#include "domain/player.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,7 +29,7 @@ int check_points(Board *board, Player *player) {
     int half_points = (board->rows * board->cols) / 2;
     if (st_view_size(player->points) > half_points) {
         return 1;
-        printf("Fim de jogo por pontuacao, o jogador %s ganhou com %d pontos!\n", player->color, player->points);
+        printf("Fim de jogo por pontuacao, o jogador %s ganhou com %d pontos!\n", player->color, st_view_size(player->points));
     }
     return 0;
 }
@@ -71,7 +71,7 @@ void singletonsEndGame(Board *board, Player *p1, Player *p2) {
         }
     }
     Player *winner = get_winner(p1, p2);
-    printf("Fim de jogo por singlestons, o jogador %s ganhou com %d pontos!\n", winner->color, winner->points);
+    printf("Fim de jogo por singlestons, o jogador %s ganhou com %d pontos!\n", winner->color, st_view_size(winner->points));
 }
 
 void withdrawal(Board *board, Player *winner) {

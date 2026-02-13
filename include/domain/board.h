@@ -12,7 +12,7 @@ typedef struct {
     Stack ***cells;
 } Board;
 
-Board *create_board();
+Board *create_board(int rows, int cols);
 int destroy_board(Board *b);
 int destroy_board_partial(Board *b, int rows_filled, int cols_filled);
 int init_board(Board *b);

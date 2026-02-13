@@ -1,11 +1,17 @@
-#include "../include/board.h"
-#include "../include/game.h"
-#include "../include/hand.h"
-#include "../include/player.h"
+#include "domain/board.h"
+#include "domain/hand.h"
+#include "ui/input.h"
+#include "domain/game.h"
+#include "domain/player.h"
+
+
 #include <stdio.h>
 
 int main() {
-    Board *board = create_board();
+    int rows = 0;
+    int cols = 0;
+
+    Board *board = create_board(rows, cols);
     Hand *hand = create_hand(view_board_size(board));
 
     Player *p1 = create_player("vermelho");

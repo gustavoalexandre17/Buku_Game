@@ -1,6 +1,6 @@
-#include "../include/hand.h"
-#include "../include/board.h"
-#include "../include/stack.h"
+#include "domain/hand.h"
+#include "domain/board.h"
+#include "domain/stack.h"
 #include <stdlib.h>
 
 Hand *create_hand(int board_size) {

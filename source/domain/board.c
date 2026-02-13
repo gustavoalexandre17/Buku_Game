@@ -1,24 +1,12 @@
-#include "../include/board.h"
+#include "domain/board.h"
+#include "ui/input.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
 /*Passievel de refatoracao*/
-Board *create_board() {
-    int rows, cols;
-
-    system("clear");
-    printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
-    printf("\nO numero de linhas e colunas devem ambos pares e iguais!\n");
-    scanf("%d%d", &rows, &cols);
-
-    // ERRADO
-    while (rows != cols || rows <= 0 || cols <= 0 || rows >= 10 || cols >= 10 || rows % 2 != 0 || cols % 2 != 0) {
-        printf("\nInsira dimensoes validas!\n");
-        scanf("%d %d", &rows, &cols);
-    }
-
-    if (rows <= 0 || cols <= 0)
-        return NULL;
+Board *create_board(int rows, int cols) {
+    input_get_board_dimensions(&rows, &cols);
 
     Board *new_board = (Board *)malloc(sizeof(Board));
 
