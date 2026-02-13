@@ -9,7 +9,7 @@ typedef enum {
 } GameEndReason;
 
 typedef struct {
-    bool game_over;
+    int game_over;
     GameEndReason reason;
     Player *winner;
     int points;
@@ -19,5 +19,9 @@ typedef struct {
     bool is_valid;
     char message[50]
 } ValidationResult;
+
+bool check_all_ingletons(Board *board);
+int calculate_and_collect_points(Board *board, Player *player)
+bool has_won_by_points(Board* board, Player* player);
 
 #endif

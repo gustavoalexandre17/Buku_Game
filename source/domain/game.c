@@ -7,46 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-int check_points(Board *board, Player *player) {
-    if (!board || !player)
-        return -1;
-
-    for (int i = 0; i < board->rows; i++) {
-        for (int j = 0; j < board->cols; j++) {
-            Stack *cell = board->cells[i][j];
-            int value = st_view_size(cell);
-
-            if (st_view_color(cell) == player->color[0]) {
-                if (value >= 3) {
-                    for (int k = 0; k < value; k++) {
-                        pop_stack(cell);
-                        insert_stack(player->points, 'O');
-                    }
-                }
-            }
-        }
-    }
-    int half_points = (board->rows * board->cols) / 2;
-    if (st_view_size(player->points) > half_points) {
-        return 1;
-        display_game_end_points(player, st_view_size(player->points));
-    }
-    return 0;
-}
-
-int allSingletons(Board *board) {
-    for (int i = 0; i < board->rows; i++) {
-        for (int j = 0; j < board->cols; j++) {
-            Stack *cell = board->cells[i][j];
-            int value = st_view_size(cell);
-
-            if (value != 1)
-                return 0;
-        }
-    }
-    return 1;
-}
-
 Player *get_winner(Player *p1, Player *p2) {
     Player *winner;
 
