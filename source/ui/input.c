@@ -1,4 +1,5 @@
 #include "input.h"
+#include "move.h"
 #include <stdio.h>
 
 int input_get_board_dimensions(int *rows, int *cols) {
@@ -38,4 +39,22 @@ int input_select_col(int max_col) {
     }
 
     return col - 1;
+}
+
+int input_get_played_positions(int hand_size) {
+    PlayedHand *positions = create_played_hand(hand_size);
+
+    for (int i = 0; i < hand_size; i++) {
+        int row, col;
+        printf("\nDigite a linha da %d° jogada: ", i + 1);
+        scanf("%d", &row);
+
+        printf("Digite a coluna da %d° jogada: ", i + 1);
+        scanf("%d", &col);
+
+        positions[i].row = row - 1;
+        positions[i].col = col - 1;
+    }
+
+    return positions;
 }
