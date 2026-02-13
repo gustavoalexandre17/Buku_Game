@@ -2,7 +2,7 @@
 #include "domain/player.h"
 #include "ui/display.h"
 
-int show_board(Board *b) {
+void show_board(Board *b) {
     if (!b)
         return -1;
 
@@ -51,4 +51,26 @@ void display_hand_size(int size) {
 
 void display_move_valid() {
     printf("\nJogada válida\n");
+}
+
+void display_current_score(Player* p1, Player* p2) {
+    printf("Pontuacao atual dos jogadores:\n %s: %d\n %s: %d\n", 
+           p1->color, st_view_size(p1->points),
+           p2->color, st_view_size(p2->points));
+}
+
+void display_game_end_points(Player *winner, int points) {
+    printf("Fim de jogo, o jogador %s ganhou com %d pontos!\n", winner->color, points);
+}
+
+void display_game_end_singletons(Player *winner, int points) {
+    printf("Fim de jogo por singlestons, o jogador %s ganhou com %d pontos!\n", winner->color, points);
+}
+
+void display_game_end_withdrawal(Player *winner, int points) {
+    printf("Fim de jogo por desistencia, o jogador %s ganhou com %d pontos!\n", winner->color, points);
+}
+
+void display_goodbye() {
+    printf("\nTabuleiro excluido com sucesso, obrigado por jogar!\n");
 }
