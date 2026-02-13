@@ -11,6 +11,8 @@ int main() {
     int rows = 0;
     int cols = 0;
 
+    input_get_board_dimensions(&rows, &cols);
+
     Board *board = create_board(rows, cols);
     Hand *hand = create_hand(view_board_size(board));
 

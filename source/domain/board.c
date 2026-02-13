@@ -4,9 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Passievel de refatoracao*/
 Board *create_board(int rows, int cols) {
-    input_get_board_dimensions(&rows, &cols);
 
     Board *new_board = (Board *)malloc(sizeof(Board));
 

@@ -13,3 +13,29 @@ int input_get_board_dimensions(int *rows, int *cols) {
 
     return 0;
 }
+
+int input_select_row(int max_row) {
+    int row;
+    printf("Selecione a linha (1 a %d):\n", max_row);
+    scanf("%d", &row);
+
+    while (row < 1 || row > max_row) {
+        printf("Linha invalida, por favor, digite uma linha valida!\n");
+        scanf("%d", &row);
+    }
+
+    return row - 1;
+}
+
+int input_select_col(int max_col) {
+    int col;
+    printf("Selecione a coluna (1 a %d):\n", max_col);
+    scanf("%d", &col);
+
+    while (col < 1 || col > max_col) {
+        printf("Coluna invalida, por favor, digite uma coluna valida!\n");
+        scanf("%d", &col);
+    }
+
+    return col - 1;
+}
