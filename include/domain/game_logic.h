@@ -1,5 +1,11 @@
-#ifdef GAMELOGIC_H
+#ifndef GAMELOGIC_H
 #define GAMELOGIC_H
+
+#include "board.h"
+#include "player.h"
+#include "move.h"
+#include "domain/hand.h"
+#include <stdbool.h>
 
 typedef enum {
     GAME_CONTINUES,
@@ -24,9 +30,10 @@ bool check_all_ingletons(Board *board);
 int calculate_and_collect_points(Board *board, Player *player);
 bool has_won_by_points(Board* board, Player* player);
 Player *determine_winner(Player *p1, Player *p2);
-ValidationResult validate_move(Board* board, PlayedHand* move, int move_size);
+ValidationResult validate_move(PlayedHand *ph, int boardsize);
 int validate_parcial_move(int row, int col, int boardSize);
 int is_neighbor(PlayedHand ph, int row, int col);
 int already_played(int row, int col, int index, PlayedHand *ph);
+GameResult execute_round(Board *board, Hand *hand, PlayedHand *move, int move_size, Player *player);
 
 #endif

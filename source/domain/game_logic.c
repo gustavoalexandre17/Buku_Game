@@ -1,8 +1,4 @@
-#include "domain/board.h"
-#include "domain/player.h"
-#include "game_logic.h"
-#include "move.h"
-#include <stdbool.h>
+#include "domain/game_logic.h"
 
 bool check_all_ingletons(Board *board) {
     for (int i = 0; i < board->rows; i++) {
@@ -132,4 +128,26 @@ int already_played(int row, int col, int index, PlayedHand *ph) {
             return 1;
     }
     return 0;
+}
+
+GameResult execute_round(Board *board, Hand *hand, PlayedHand *move, int move_size, Player *player) {
+    GameResult result;
+
+    ValidationResult validation = validate_move(move, board->rows);
+    if (!validation.is_valid) {
+        result.game_over = false;
+        return result;
+    }
+
+    put_hand(hand, board, move);
+
+    calculate_and_collect_points(board, player);
+
+    if (has_won_by_points(board, player)) {
+        result.game_over = true;
+        result.reason = WIN_BY_POINTS;
+        result.winner = player;
+        result.points = st_view_size(player->points);
+    }
+    return (GameResult){.game_over = false};
 }
