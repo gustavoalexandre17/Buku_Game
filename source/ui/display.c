@@ -1,5 +1,6 @@
 #include "domain/board.h"
 #include "domain/player.h"
+#include "move.h"
 #include "ui/display.h"
 
 void show_board(Board *b) {
@@ -73,4 +74,12 @@ void display_game_end_withdrawal(Player *winner, int points) {
 
 void display_goodbye() {
     printf("\nTabuleiro excluido com sucesso, obrigado por jogar!\n");
+}
+
+void display_played_move(PlayedHand *move, int size) {
+    printf("Jogada realziada -> ");
+    for (int i = 0; i < size; i++) {
+        printf("{%d,%d} ", move[i].row + 1, move[i].col + 1);
+    }
+    printf("\n");
 }

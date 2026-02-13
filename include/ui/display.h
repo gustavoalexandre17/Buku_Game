@@ -10,5 +10,7 @@ void display_game_end_points(Player *winner, int points)
 void display_game_end_singletons(Player *winner, int points)
 void display_game_end_withdrawal(Player *winner, int points)
 void display_goodbye()
+void display_played_move(PlayedHand *move, int size);
+
 
 #endif
