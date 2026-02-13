@@ -1,6 +1,6 @@
 #include "domain/game_logic.h"
 
-bool check_all_ingletons(Board *board) {
+bool check_all_singletons(Board *board) {
     for (int i = 0; i < board->rows; i++) {
         for (int j = 0; j < board->cols; j++) {
             Stack *cell = board->cells[i][j];
@@ -150,4 +150,32 @@ GameResult execute_round(Board *board, Hand *hand, PlayedHand *move, int move_si
         result.points = st_view_size(player->points);
     }
     return (GameResult){.game_over = false};
+}
+
+GameResult resolve_singletons_end(Board* board, Player* p1, Player* p2) {
+    GameResult result;
+    if (check_all_ingletons(board)) {
+        result.game_over = true;
+        result.reason = WIN_BY_SINGLETONS;
+        result.winner = determine_winner(p1, p2);
+        result.points = st_view_size(result.winner->points);
+    } else {
+        result.game_over = false;
+    }
+    return result;
+}
+
+GameResult resolve_withdrawal(Board* board, Player* winner) {
+    GameResult result;
+
+    if (check_all_singletons(board)) {
+        result.game_over = true;
+        result.reason = WIN_BY_SINGLETONS;
+        result.winner = winner;
+        result.points = st_view_size(winner->points);
+    }
+
+    result.game_over = false;
+
+    return result;
 }
