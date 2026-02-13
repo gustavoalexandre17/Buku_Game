@@ -29,7 +29,7 @@ int check_points(Board *board, Player *player) {
     int half_points = (board->rows * board->cols) / 2;
     if (st_view_size(player->points) > half_points) {
         return 1;
-        printf("Fim de jogo por pontuacao, o jogador %s ganhou com %d pontos!\n", player->color, st_view_size(player->points));
+        display_game_end_points(player, st_view_size(player->points));
     }
     return 0;
 }
@@ -71,7 +71,7 @@ void singletonsEndGame(Board *board, Player *p1, Player *p2) {
         }
     }
     Player *winner = get_winner(p1, p2);
-    printf("Fim de jogo por singlestons, o jogador %s ganhou com %d pontos!\n", winner->color, st_view_size(winner->points));
+    display_game_end_singletons(winner, st_view_size(winner->points));
 }
 
 void withdrawal(Board *board, Player *winner) {
@@ -88,8 +88,7 @@ void withdrawal(Board *board, Player *winner) {
     }
     system("clear");
     show_board(board);
-    int points = st_view_size(winner->points);
-    printf("Fim de jogo por desistencia, o jogador %s ganhou com %d pontos!\n", winner->color, points);
+    display_game_end_withdrawal(winner, st_view_size(winner->points));
 }
 
 int game_round(Board *board, Hand *hand, Player *player) {
@@ -129,7 +128,7 @@ int game_round(Board *board, Hand *hand, Player *player) {
 
     printf("\nEstado atual:\n");
     system("clear");
-    show_board(board);
+    display_board(board);
 
     int size = hand_size(hand);
 
@@ -137,29 +136,18 @@ int game_round(Board *board, Hand *hand, Player *player) {
     if (size == 0)
         return 2;
 
-    printf("\nO tamanho da mao e de: %d\n", hand_size(hand));
+    display_hand_size(size);
     PlayedHand *play = create_played_hand(size);
 
-    int valid = -1;
-    while (valid == -1) {
-        for (int i = 0; i < hand_size(hand); i++) {
-            int tempRow, tempCol;
-            printf("\nDigite a linha da %d° jogada: ", i + 1);
-            scanf("%d", &tempRow);
+    input_get_played_positions(size);
+    // validate_played_positions(play, size, board);
 
-            printf("Digite a coluna da %d° jogada: ", i + 1);
-            scanf("%d", &tempCol);
-
-            play[i].row = tempRow - 1;
-            play[i].col = tempCol - 1;
-
+    /*TODO: 
+    Ajustar essa verificacao para se encaxar no played positions 
             valid = validate_full_move(play, row);
             system("clear");
-            show_board(board);
-        }
-    }
+            show_board(board);*/
 
-    printf("\nJogada válida\n");
     put_hand(hand, board, play);
     int gameOver = check_points(board, player);
     // fim de jogo por pontos
@@ -167,16 +155,13 @@ int game_round(Board *board, Hand *hand, Player *player) {
         return 3;
 
     system("clear");
-    show_board(board);
+    display_board(board);
 
-    printf("Jogada realizada -> ");
-    for (int i = 0; i < size; i++)
-        printf("{%d,%d} ", play[i].row, play[i].col);
+    display_played_move(play, size);
 
     printf("\n");
     free_played_hand(play);
     board->turns++;
 
-    // continua normalmente
     return 0;
 }
