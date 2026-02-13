@@ -23,5 +23,6 @@ typedef struct {
 bool check_all_ingletons(Board *board);
 int calculate_and_collect_points(Board *board, Player *player)
 bool has_won_by_points(Board* board, Player* player);
+Player *determine_winner(Player *p1, Player *p2)
 
 #endif

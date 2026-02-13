@@ -42,3 +42,7 @@ bool has_won_by_points(Board* board, Player* player) {
     int totalCells = board->rows * board->cols;
     return points > (totalCells / 2);
 }
+
+Player *determine_winner(Player *p1, Player *p2) {
+    return (st_view_size(p1->points) > st_view_size(p2->points)) ? p1 : p2;
+}
