@@ -1,5 +1,5 @@
-#ifndef MAKEMOVE_H
-#define MAKEMOVE_H
+#ifndef MOVE_H
+#define MOVE_H
 
 typedef struct
 {

@@ -49,67 +49,94 @@ cmake_ninja_workdir = /home/gustavo/Projects/Buku_Game/build/
 
 build cmake_object_order_depends_target_buku_game: phony || .
 
-build CMakeFiles/buku_game.dir/source/main.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/main.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/main.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/main.c || cmake_object_order_depends_target_buku_game
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/buku_game.dir/source/main.c.o.d
+  DEP_FILE = CMakeFiles/buku_game.dir/main.c.o.d
   FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
   OBJECT_DIR = CMakeFiles/buku_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/player.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/player.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/move.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/move.c || cmake_object_order_depends_target_buku_game
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/buku_game.dir/source/player.c.o.d
+  DEP_FILE = CMakeFiles/buku_game.dir/move.c.o.d
   FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
   OBJECT_DIR = CMakeFiles/buku_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/game.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/game.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/domain/player.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/domain/player.c || cmake_object_order_depends_target_buku_game
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/buku_game.dir/source/game.c.o.d
+  DEP_FILE = CMakeFiles/buku_game.dir/source/domain/player.c.o.d
   FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
   OBJECT_DIR = CMakeFiles/buku_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/domain
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/board.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/board.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/domain/game.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/domain/game.c || cmake_object_order_depends_target_buku_game
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/buku_game.dir/source/board.c.o.d
+  DEP_FILE = CMakeFiles/buku_game.dir/source/domain/game.c.o.d
   FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
   OBJECT_DIR = CMakeFiles/buku_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/domain
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/stack.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/stack.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/domain/board.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/domain/board.c || cmake_object_order_depends_target_buku_game
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/buku_game.dir/source/stack.c.o.d
+  DEP_FILE = CMakeFiles/buku_game.dir/source/domain/board.c.o.d
   FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
   OBJECT_DIR = CMakeFiles/buku_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/domain
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/hand.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/hand.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/domain/stack.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/domain/stack.c || cmake_object_order_depends_target_buku_game
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/buku_game.dir/source/hand.c.o.d
+  DEP_FILE = CMakeFiles/buku_game.dir/source/domain/stack.c.o.d
   FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
   OBJECT_DIR = CMakeFiles/buku_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/domain
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
-build CMakeFiles/buku_game.dir/source/move.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/move.c || cmake_object_order_depends_target_buku_game
+build CMakeFiles/buku_game.dir/source/domain/hand.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/domain/hand.c || cmake_object_order_depends_target_buku_game
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/buku_game.dir/source/move.c.o.d
+  DEP_FILE = CMakeFiles/buku_game.dir/source/domain/hand.c.o.d
   FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
   OBJECT_DIR = CMakeFiles/buku_game.dir
-  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/domain
+  TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
+
+build CMakeFiles/buku_game.dir/source/domain/game_logic.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/domain/game_logic.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/buku_game.dir/source/domain/game_logic.c.o.d
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
+  OBJECT_DIR = CMakeFiles/buku_game.dir
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/domain
+  TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
+
+build CMakeFiles/buku_game.dir/source/ui/display.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/ui/display.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/buku_game.dir/source/ui/display.c.o.d
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
+  OBJECT_DIR = CMakeFiles/buku_game.dir
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/ui
+  TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
+
+build CMakeFiles/buku_game.dir/source/ui/input.c.o: C_COMPILER__buku_game_unscanned_Debug /home/gustavo/Projects/Buku_Game/source/ui/input.c || cmake_object_order_depends_target_buku_game
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/buku_game.dir/source/ui/input.c.o.d
+  FLAGS = -g -std=gnu17 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui
+  OBJECT_DIR = CMakeFiles/buku_game.dir
+  OBJECT_FILE_DIR = CMakeFiles/buku_game.dir/source/ui
   TARGET_SUPPORT_DIR = CMakeFiles/buku_game.dir
 
 
@@ -120,7 +147,7 @@ build CMakeFiles/buku_game.dir/source/move.c.o: C_COMPILER__buku_game_unscanned_
 #############################################
 # Link the executable /home/gustavo/Projects/Buku_Game/bin/buku_game
 
-build /home/gustavo/Projects/Buku_Game/bin/buku_game: C_EXECUTABLE_LINKER__buku_game_Debug CMakeFiles/buku_game.dir/source/main.c.o CMakeFiles/buku_game.dir/source/player.c.o CMakeFiles/buku_game.dir/source/game.c.o CMakeFiles/buku_game.dir/source/board.c.o CMakeFiles/buku_game.dir/source/stack.c.o CMakeFiles/buku_game.dir/source/hand.c.o CMakeFiles/buku_game.dir/source/move.c.o
+build /home/gustavo/Projects/Buku_Game/bin/buku_game: C_EXECUTABLE_LINKER__buku_game_Debug CMakeFiles/buku_game.dir/main.c.o CMakeFiles/buku_game.dir/move.c.o CMakeFiles/buku_game.dir/source/domain/player.c.o CMakeFiles/buku_game.dir/source/domain/game.c.o CMakeFiles/buku_game.dir/source/domain/board.c.o CMakeFiles/buku_game.dir/source/domain/stack.c.o CMakeFiles/buku_game.dir/source/domain/hand.c.o CMakeFiles/buku_game.dir/source/domain/game_logic.c.o CMakeFiles/buku_game.dir/source/ui/display.c.o CMakeFiles/buku_game.dir/source/ui/input.c.o
   CONFIG = Debug
   DEP_FILE = CMakeFiles/buku_game.dir/link.d
   FLAGS = -g
@@ -178,14 +205,14 @@ build all: phony /home/gustavo/Projects/Buku_Game/bin/buku_game
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /home/gustavo/Projects/Buku_Game/build/cmake_install.cmake: RERUN_CMAKE | /home/gustavo/Projects/Buku_Game/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.2/CMakeCCompiler.cmake CMakeFiles/4.2.2/CMakeSystem.cmake
+build build.ninja /home/gustavo/Projects/Buku_Game/build/cmake_install.cmake: RERUN_CMAKE | /home/gustavo/Projects/Buku_Game/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.3/CMakeCCompiler.cmake CMakeFiles/4.2.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/gustavo/Projects/Buku_Game/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.2/CMakeCCompiler.cmake CMakeFiles/4.2.2/CMakeSystem.cmake: phony
+build /home/gustavo/Projects/Buku_Game/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.2.3/CMakeCCompiler.cmake CMakeFiles/4.2.3/CMakeSystem.cmake: phony
 
 
 #############################################

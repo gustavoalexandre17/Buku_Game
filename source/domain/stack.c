@@ -1,4 +1,4 @@
-#include "../include/stack.h"
+#include "domain/stack.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>

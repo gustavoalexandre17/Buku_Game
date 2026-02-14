@@ -1,24 +1,10 @@
-#include "../include/board.h"
+#include "domain/board.h"
+#include "ui/input.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-/*Passievel de refatoracao*/
-Board *create_board() {
-    int rows, cols;
-
-    system("clear");
-    printf("\nDigite o numero de linhas e colunas do seu tabuleiro:\n");
-    printf("\nO numero de linhas e colunas devem ambos pares e iguais!\n");
-    scanf("%d%d", &rows, &cols);
-
-    // ERRADO
-    while (rows != cols || rows <= 0 || cols <= 0 || rows >= 10 || cols >= 10 || rows % 2 != 0 || cols % 2 != 0) {
-        printf("\nInsira dimensoes validas!\n");
-        scanf("%d %d", &rows, &cols);
-    }
-
-    if (rows <= 0 || cols <= 0)
-        return NULL;
+Board *create_board(int rows, int cols) {
 
     Board *new_board = (Board *)malloc(sizeof(Board));
 
@@ -99,44 +85,7 @@ int destroy_board(Board *b) {
     return 0;
 }
 
-int show_board(Board *b) {
-    if (!b)
-        return -1;
 
-    printf("    ");
-    for (int j = 0; j < b->cols; j++)
-        printf(" %d  ", j + 1);
-    printf("\n");
-
-    printf(WHITE "   +" RESET);
-    for (int j = 0; j < b->cols; j++)
-        printf(WHITE "---+" RESET);
-    printf("\n");
-
-    for (int i = 0; i < b->rows; i++) {
-        printf(" %d", i + 1);
-        printf(WHITE " |" RESET);
-
-        for (int j = 0; j < b->cols; j++) {
-            char color = st_view_color(b->cells[i][j]);
-            if (st_view_size(b->cells[i][j])) {
-                color == 'v' ? printf(RED " %d" RESET, st_view_size(b->cells[i][j]))
-                             : printf(BLUE " %d" RESET, st_view_size(b->cells[i][j]));
-            } else {
-                color == 'v' ? printf(RED " %c" RESET, TOKEN) : printf(BLUE " %c" RESET, TOKEN);
-            }
-            printf(WHITE " |" RESET);
-        }
-        printf("\n");
-
-        printf(WHITE "   +" RESET);
-        for (int j = 0; j < b->rows; j++)
-            printf(WHITE "---+" RESET);
-        printf("\n");
-    }
-
-    return 0;
-}
 
 int fill_board(Board *b) {
     if (!b)

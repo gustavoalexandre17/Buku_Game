@@ -8,18 +8,23 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Executável do jogo
 add_executable(buku_game
-    source/main.c
-    source/player.c
-    source/game.c
-    source/board.c
-    source/stack.c
-    source/hand.c
-    source/move.c
+    main.c
+    move.c
+    source/domain/player.c
+    source/domain/game.c
+    source/domain/board.c
+    source/domain/stack.c
+    source/domain/hand.c
+    source/domain/game_logic.c
+    source/ui/display.c
+    source/ui/input.c
 )
 
 # Diretório dos headers
 target_include_directories(buku_game PRIVATE
     include
+    include/domain
+    include/ui
 )
 
 # Flags de compilação
