@@ -15,6 +15,7 @@ add_executable(buku_game
     source/domain/board.c
     source/domain/stack.c
     source/domain/hand.c
+    source/domain/game_logic.c
     source/ui/display.c
     source/ui/input.c
 )

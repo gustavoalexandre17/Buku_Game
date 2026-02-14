@@ -1,11 +1,12 @@
+#include "ui/display.h"
 #include "domain/board.h"
 #include "domain/player.h"
 #include "move.h"
-#include "ui/display.h"
+#include <stdio.h>
 
-void show_board(Board *b) {
+void display_board(Board *b) {
     if (!b)
-        return -1;
+        return;
 
     printf("    ");
     for (int j = 0; j < b->cols; j++)
@@ -38,8 +39,6 @@ void show_board(Board *b) {
             printf(WHITE "---+" RESET);
         printf("\n");
     }
-
-    return 0;
 }
 
 void display_turn_start(Player* player) {
@@ -50,7 +49,7 @@ void display_hand_size(int size) {
     printf("\nO tamanho da mao e de: %d\n", size);
 }
 
-void display_move_valid() {
+void display_move_valid(PlayedHand *move, int size) {
     printf("\nJogada válida\n");
 }
 

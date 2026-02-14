@@ -1,12 +1,15 @@
 #include "domain/board.h"
-#include "domain/hand.h"
-#include "ui/input.h"
 #include "domain/game.h"
 #include "domain/player.h"
 #include "domain/game_logic.h"
+#include "domain/hand.h"
+#include "ui/input.h"
+#include "ui/display.h"
+
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 int main() {
     int rows, cols;
@@ -28,7 +31,6 @@ int main() {
     Player *other = p2;
 
     while (true) {
-
         if (board->turns > 1 && check_all_singletons(board)) {
             GameResult result = resolve_singletons_endgame(board, p1, p2);
             display_game_end_singletons(result.winner, result.points);
@@ -50,7 +52,6 @@ int main() {
 
         int hand_sz = hand_size(hand);
 
-        // TODO: resolve_withdrawal
         if (check_withdrawal(hand)) {
             GameResult result = resolve_withdrawal(board, other);
             display_game_end_withdrawal(result.winner, result.points);
@@ -62,7 +63,7 @@ int main() {
 
         ValidationResult validation;
         do {
-            validation = validate_move(hand, board->cells);
+            validation = validate_move(move, board->cols); // <- GAMBIARRA
             if (!validation.is_valid) {
                 printf("Movimento invalido!\n");
                 free_played_hand(move);

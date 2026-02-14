@@ -41,7 +41,7 @@ int input_select_col(int max_col) {
     return col - 1;
 }
 
-int input_get_played_positions(int hand_size) {
+PlayedHand *input_get_played_positions(int hand_size) {
     PlayedHand *positions = create_played_hand(hand_size);
 
     for (int i = 0; i < hand_size; i++) {

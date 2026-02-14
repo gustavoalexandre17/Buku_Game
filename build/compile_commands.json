@@ -43,6 +43,12 @@
 },
 {
   "directory": "/home/gustavo/Projects/Buku_Game/build",
+  "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/domain/game_logic.c.o -c /home/gustavo/Projects/Buku_Game/source/domain/game_logic.c",
+  "file": "/home/gustavo/Projects/Buku_Game/source/domain/game_logic.c",
+  "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/domain/game_logic.c.o"
+},
+{
+  "directory": "/home/gustavo/Projects/Buku_Game/build",
   "command": "/usr/bin/gcc -I/home/gustavo/Projects/Buku_Game/include -I/home/gustavo/Projects/Buku_Game/include/domain -I/home/gustavo/Projects/Buku_Game/include/ui -g -std=gnu17 -Wall -Wextra -Wpedantic -o CMakeFiles/buku_game.dir/source/ui/display.c.o -c /home/gustavo/Projects/Buku_Game/source/ui/display.c",
   "file": "/home/gustavo/Projects/Buku_Game/source/ui/display.c",
   "output": "/home/gustavo/Projects/Buku_Game/build/CMakeFiles/buku_game.dir/source/ui/display.c.o"

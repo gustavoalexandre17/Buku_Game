@@ -23,10 +23,10 @@ typedef struct {
 
 typedef struct {
     bool is_valid;
-    char message[50]
 } ValidationResult;
 
 bool check_all_singletons(Board *board);
+bool check_withdrawal(Hand *hand);
 int calculate_and_collect_points(Board *board, Player *player);
 bool has_won_by_points(Board* board, Player* player);
 
