@@ -34,22 +34,7 @@ void singletonsEndGame(Board *board, Player *p1, Player *p2) {
     display_game_end_singletons(winner, st_view_size(winner->points));
 }
 
-void withdrawal(Board *board, Player *winner) {
-    for (int i = 0; i < board->rows; i++) {
-        for (int j = 0; j < board->cols; j++) {
-            Stack *cell = board->cells[i][j];
-            int value = st_view_size(cell);
 
-            for (int k = 0; k < value; k++) {
-                pop_stack(cell);
-                insert_stack(winner->points, 'O');
-            }
-        }
-    }
-    system("clear");
-    show_board(board);
-    display_game_end_withdrawal(winner, st_view_size(winner->points));
-}
 
 int game_round(Board *board, Hand *hand, Player *player) {
     int row = board->rows;

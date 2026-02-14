@@ -13,6 +13,10 @@ bool check_all_singletons(Board *board) {
     return 1;
 }
 
+bool check_withdrawal(Hand *hand) {
+    return hand_size(hand) == 0;
+}
+
 int calculate_and_collect_points(Board *board, Player *player) {
     if (!board || !player)
         return -1;
@@ -152,8 +156,9 @@ GameResult execute_round(Board *board, Hand *hand, PlayedHand *move, int move_si
     return (GameResult){.game_over = false};
 }
 
-GameResult resolve_singletons_end(Board* board, Player* p1, Player* p2) {
+GameResult resolve_singletons_endgame(Board* board, Player* p1, Player* p2) {
     GameResult result;
+
     if (check_all_ingletons(board)) {
         result.game_over = true;
         result.reason = WIN_BY_SINGLETONS;
@@ -162,20 +167,35 @@ GameResult resolve_singletons_end(Board* board, Player* p1, Player* p2) {
     } else {
         result.game_over = false;
     }
+
     return result;
 }
 
-GameResult resolve_withdrawal(Board* board, Player* winner) {
-    GameResult result;
+// Pega todas as pecas do tabuleiro e da pro jogador vencedor
+GameResult resolve_withdrawal(Board* board, Player* winner, Hand *hand) {
+    for (int i = 0; i < board->rows; i++) {
+        for (int j = 0; j < board->cols; j++) {
+            if (st_view_color(board->cells[i][j]) != winner->color[0]) {
 
-    if (check_all_singletons(board)) {
+            Stack *cell = board->cells[i][j];
+            int value = st_view_size(cell);
+
+            for (int k = 0; k < value; k++) {
+                pop_stack(cell);
+                insert_stack(winner->points, 'O');
+            }
+        }
+    }
+
+    GameResult result;
+    if (check_withdrawal(hand)) {
         result.game_over = true;
         result.reason = WIN_BY_SINGLETONS;
         result.winner = winner;
         result.points = st_view_size(winner->points);
-    }
-
+    } else {
     result.game_over = false;
+    }
 
     return result;
 }
