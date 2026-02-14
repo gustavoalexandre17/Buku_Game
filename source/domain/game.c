@@ -1,1 +1,1 @@
-#include "domain/game.h"
+#include "../../include/domain/game.h"

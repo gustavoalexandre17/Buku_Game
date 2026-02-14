@@ -1,5 +1,5 @@
-#include "domain/player.h"
-#include "domain/stack.h"
+#include "../../include/domain/player.h"
+#include "../../include/domain/stack.h"
 #include <stdlib.h>
 
 Player *create_player(char *color) {

@@ -1,4 +1,4 @@
-#include "domain/game_logic.h"
+#include "../../include/domain/game_logic.h"
 
 bool check_all_singletons(Board *board) {
     for (int i = 0; i < board->rows; i++) {
@@ -13,9 +13,7 @@ bool check_all_singletons(Board *board) {
     return 1;
 }
 
-bool check_withdrawal(Hand *hand) {
-    return hand_size(hand) == 0;
-}
+bool check_withdrawal(Hand *hand) { return hand_size(hand) == 0; }
 
 int calculate_and_collect_points(Board *board, Player *player) {
     if (!board || !player)
@@ -39,7 +37,7 @@ int calculate_and_collect_points(Board *board, Player *player) {
     return st_view_size(player->points);
 }
 
-bool has_won_by_points(Board* board, Player* player) {
+bool has_won_by_points(Board *board, Player *player) {
     int points = st_view_size(player->points);
     int totalCells = board->rows * board->cols;
     return points > (totalCells / 2);
@@ -155,7 +153,7 @@ GameResult execute_round(Board *board, Hand *hand, PlayedHand *move, int move_si
     return (GameResult){.game_over = false};
 }
 
-GameResult resolve_singletons_endgame(Board* board, Player* p1, Player* p2) {
+GameResult resolve_singletons_endgame(Board *board, Player *p1, Player *p2) {
     GameResult result;
 
     if (check_all_singletons(board)) {
@@ -171,7 +169,7 @@ GameResult resolve_singletons_endgame(Board* board, Player* p1, Player* p2) {
 }
 
 // Pega todas as pecas do tabuleiro e da pro jogador vencedor
-GameResult resolve_withdrawal(Board* board, Player* winner) {
+GameResult resolve_withdrawal(Board *board, Player *winner) {
     for (int i = 0; i < board->rows; i++) {
         for (int j = 0; j < board->cols; j++) {
             if (st_view_color(board->cells[i][j]) != winner->color[0]) {
@@ -188,10 +186,10 @@ GameResult resolve_withdrawal(Board* board, Player* winner) {
     }
 
     GameResult result;
-        result.game_over = true;
-        result.reason = WIN_BY_SINGLETONS;
-        result.winner = winner;
-        result.points = st_view_size(winner->points);
+    result.game_over = true;
+    result.reason = WIN_BY_SINGLETONS;
+    result.winner = winner;
+    result.points = st_view_size(winner->points);
 
     return result;
 }

@@ -1,8 +1,8 @@
 #ifndef HAND_H
 #define HAND_H
 
+#include "../move.h"
 #include "board.h"
-#include "move.h"
 
 typedef struct {
     Stack *pieces;

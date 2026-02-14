@@ -1,7 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "move.h"
+#include "../move.h"
 
 int input_get_board_dimensions(int *rows, int *cols);
 int input_select_row(int max_rows);
