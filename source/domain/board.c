@@ -1,6 +1,4 @@
-#include "domain/board.h"
-#include "ui/input.h"
-
+#include "../../include/domain/board.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -84,8 +82,6 @@ int destroy_board(Board *b) {
 
     return 0;
 }
-
-
 
 int fill_board(Board *b) {
     if (!b)

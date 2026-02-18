@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "colors.h"
+#include "../ui/colors.h"
 #include "stack.h"
 #define TOKEN 'x'
 

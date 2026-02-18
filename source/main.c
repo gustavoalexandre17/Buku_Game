@@ -1,14 +1,13 @@
-#include "domain/board.h"
-#include "domain/game.h"
-#include "domain/player.h"
-#include "domain/game_logic.h"
-#include "domain/hand.h"
-#include "ui/input.h"
-#include "ui/display.h"
+#include "../include/domain/board.h"
+#include "../include/domain/game.h"
+#include "../include/domain/game_logic.h"
+#include "../include/domain/hand.h"
+#include "../include/domain/player.h"
+#include "../include/ui/display.h"
+#include "../include/ui/input.h"
 
-
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int main() {
@@ -59,7 +58,7 @@ int main() {
 
         display_hand_size(hand_sz);
 
-        PlayedHand *move = input_get_played_positions(hand_sz);        
+        PlayedHand *move = input_get_played_positions(hand_sz);
 
         ValidationResult validation;
         do {

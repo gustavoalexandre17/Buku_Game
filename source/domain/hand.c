@@ -1,6 +1,6 @@
-#include "domain/hand.h"
-#include "domain/board.h"
-#include "domain/stack.h"
+#include "../../include/domain/hand.h"
+#include "../../include/domain/board.h"
+#include "../../include/domain/stack.h"
 #include <stdlib.h>
 
 Hand *create_hand(int board_size) {
@@ -11,7 +11,7 @@ Hand *create_hand(int board_size) {
 
     newHand->pieces = create_stack();
 
-    if (board_size % 2 != 0)
+    if (board_size % 2 == 0)
         insert_stack(newHand->pieces, 'O');
     return newHand;
 }

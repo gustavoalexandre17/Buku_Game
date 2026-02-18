@@ -1,5 +1,5 @@
-#include "input.h"
-#include "move.h"
+#include "../../include/ui/input.h"
+#include "../../include/move.h"
 #include <stdio.h>
 
 int input_get_board_dimensions(int *rows, int *cols) {
