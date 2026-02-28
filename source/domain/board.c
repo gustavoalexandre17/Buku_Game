@@ -64,7 +64,9 @@ int destroy_board_partial(Board *b, int rows_filled, int cols_filled) {
     for (int i = 0; i < rows_filled; i++) {
         for (int j = 0; j < cols_filled; j++)
             free_stack(b->cells[i][j]);
+        free(b->cells[i]);
     }
+    free(b->cells);
 
     return 0;
 }

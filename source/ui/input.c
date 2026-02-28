@@ -44,6 +44,10 @@ int input_select_col(int max_col) {
 PlayedHand *input_get_played_positions(int hand_size) {
     PlayedHand *positions = create_played_hand(hand_size);
 
+    if (positions == NULL) return NULL;
+
+    if (hand_size == 0) return positions;
+
     for (int i = 0; i < hand_size; i++) {
         int row, col;
         printf("\nDigite a linha da %d° jogada: ", i + 1);
