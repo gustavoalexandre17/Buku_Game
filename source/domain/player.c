@@ -8,8 +8,10 @@ Player *create_player(char *color) {
         return NULL;
 
     new_player->points = create_stack();
-    if (!new_player->points)
+    if (!new_player->points) {
+        free(new_player);
         return NULL;
+    }
 
     new_player->color = color;
 
