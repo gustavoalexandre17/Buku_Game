@@ -1,5 +1,4 @@
 #include "../include/move.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 PlayedHand *create_played_hand(int size) {

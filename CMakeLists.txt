@@ -8,10 +8,9 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Executável do jogo
 add_executable(buku_game
-    main.c
-    move.c
+    source/main.c
+    source/move.c
     source/domain/player.c
-    source/domain/game.c
     source/domain/board.c
     source/domain/stack.c
     source/domain/hand.c

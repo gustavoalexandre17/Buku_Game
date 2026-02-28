@@ -4,6 +4,6 @@
 #define RESET "\033[0m"
 
 int main(int argc, char const *argv[]) {
-    printf(RED "Hello World\n" RESET);
+    printf(BLUE "Hello World\n" RESET);
     return 0;
 }
