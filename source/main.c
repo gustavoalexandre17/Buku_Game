@@ -1,5 +1,4 @@
 #include "../include/domain/board.h"
-#include "../include/domain/game.h"
 #include "../include/domain/game_logic.h"
 #include "../include/domain/hand.h"
 #include "../include/domain/player.h"
@@ -10,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
     int rows, cols;
 
     input_get_board_dimensions(&rows, &cols);
@@ -54,6 +53,7 @@ int main() {
         if (check_withdrawal(hand)) {
             GameResult result = resolve_withdrawal(board, other);
             display_game_end_withdrawal(result.winner, result.points);
+            break;
         }
 
         display_hand_size(hand_sz);

@@ -134,7 +134,7 @@ int already_played(int row, int col, int index, PlayedHand *ph) {
 GameResult execute_round(Board *board, Hand *hand, PlayedHand *move, int move_size, Player *player) {
     GameResult result;
 
-    ValidationResult validation = validate_move(move, board->rows);
+    ValidationResult validation = validate_move(move, board->cols);
     if (!validation.is_valid) {
         result.game_over = false;
         return result;

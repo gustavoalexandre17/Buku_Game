@@ -88,10 +88,27 @@ void free_stack(Stack *st) {
     free(st);
 }
 
-void st_set_color(Stack *st, char color) { st->color = color; }
+void st_set_color(Stack *st, char color) {
+    if (st != NULL) 
+        st->color = color;
+}
 
-char st_view_color(Stack *st) { return st->color; }
+char st_view_color(Stack *st) { 
+    if (st == NULL)
+        return 'e'; // <- Gambiarra
+    return st->color;
+}
 
-char st_view_top(Stack *st) { return st->top->value; }
+char st_view_top(Stack *st) { 
+    if (st != NULL || st->top != NULL) 
+        return 'e';    
 
-int st_view_size(Stack *st) { return st->size; }
+    return st->top->value;
+}
+
+int st_view_size(Stack *st) {
+        if (st == NULL)
+            return -1;
+
+        return st->size;
+}
