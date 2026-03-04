@@ -85,6 +85,11 @@ int main(void) {
         display_current_score(p1, p2);
 
         free_played_hand(move);
+        
+        Player *temp = current;
+        current = other;
+        other = temp;
+        
         board->turns++;
     }
 
