@@ -6,11 +6,11 @@ bool check_all_singletons(Board *board) {
             Stack *cell = board->cells[i][j];
             int value = st_view_size(cell);
 
-            if (value != 1)
-                return 0;
+            if (value != 1 && value != 0)
+                return false;
         }
     }
-    return 1;
+    return true;
 }
 
 bool check_withdrawal(Hand *hand) { return hand_size(hand) == 0; }
@@ -172,7 +172,7 @@ GameResult resolve_singletons_endgame(Board *board, Player *p1, Player *p2) {
 GameResult resolve_withdrawal(Board *board, Player *winner) {
     for (int i = 0; i < board->rows; i++) {
         for (int j = 0; j < board->cols; j++) {
-            if (st_view_color(board->cells[i][j]) != winner->color[0]) {
+            if (st_view_color(board->cells[i][j]) != winner->color[0]) { // <- Pequena gambiarra
 
                 Stack *cell = board->cells[i][j];
                 int value = st_view_size(cell);
