@@ -110,7 +110,7 @@ ValidationResult validate_move(PlayedHand *ph, int boardSize) {
 }
 
 int validate_parcial_move(int row, int col, int boardSize) {
-    if (col < 0 || row < 0 || col > boardSize || row > boardSize)
+    if (col < 0 || row < 0 || col >= boardSize || row >= boardSize)
         return 0;
 
     return 1;
