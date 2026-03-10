@@ -5,21 +5,22 @@
 		{
 			"compiler" : 
 			{
-				"id" : "GNU",
+				"id" : "Clang",
 				"implicit" : 
 				{
 					"includeDirectories" : 
 					[
-						"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include",
+						"/usr/lib/clang/21/include",
 						"/usr/local/include",
-						"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include-fixed",
 						"/usr/include"
 					],
 					"linkDirectories" : 
 					[
-						"/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1",
-						"/usr/lib",
-						"/lib"
+						"/usr/lib64/gcc/x86_64-pc-linux-gnu/15.2.1",
+						"/usr/lib64",
+						"/lib64",
+						"/lib",
+						"/usr/lib"
 					],
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : 
@@ -31,8 +32,8 @@
 						"gcc_s"
 					]
 				},
-				"path" : "/usr/bin/gcc",
-				"version" : "15.2.1"
+				"path" : "/usr/bin/clang",
+				"version" : "21.1.8"
 			},
 			"language" : "C",
 			"sourceFileExtensions" : 

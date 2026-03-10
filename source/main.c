@@ -32,6 +32,7 @@ int main(void) {
         if (board->turns > 1 && check_all_singletons(board)) {
             GameResult result = resolve_singletons_endgame(board, p1, p2);
             display_game_end_singletons(result.winner, result.points);
+            break;
         }
 
         display_turn_start(current);
@@ -49,7 +50,8 @@ int main(void) {
         display_board(board);
 
         int hand_sz = hand_size(hand);
-
+        
+        // Verificacao de desistencia
         if (check_withdrawal(hand)) {
             GameResult result = resolve_withdrawal(board, other);
             display_game_end_withdrawal(result.winner, result.points);
@@ -95,6 +97,8 @@ int main(void) {
 
     destroy_board(board);
     free_hand(hand);
+    destroy_player(p1);
+    destroy_player(p2);
     display_goodbye();
 
     return 0;

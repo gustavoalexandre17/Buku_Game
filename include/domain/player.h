@@ -9,5 +9,6 @@ typedef struct {
 } Player;
 
 Player *create_player(char *color);
+void destroy_player(Player *player);
 
 #endif
