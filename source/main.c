@@ -70,7 +70,16 @@ int main(void) {
             }
         } while (!validation.is_valid);
 
+        Board *previous_state = copy_board(board);
+
         GameResult result = execute_round(board, hand, move, hand_sz, current);
+
+        if (boards_equal(previous_state, board)) {
+            GameResult withdrawal_result = resolve_withdrawal(board, other);
+            destroy_board(previous_state);
+            display_game_end_withdrawal(withdrawal_result.winner, withdrawal_result.points);
+            break;
+        }
 
         system("clear");
         display_board(board);

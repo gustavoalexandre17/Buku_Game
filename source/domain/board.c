@@ -102,3 +102,37 @@ int view_board_size(Board *b) {
         return -1;
     return b->rows;
 }
+
+Board *copy_board(Board *b) {
+    Board *copy = create_board(b->rows, b->cols);
+    if (!copy) return NULL;
+
+    for (int i = 0; i < b->rows; i++) {
+        for (int j = 0; j < b->cols; j++) {
+            Stack *original = b->cells[i][j];
+            Stack *new_stack = copy->cells[i][j];
+
+           // while (st_view_size(new_stack) > 0) pop_stack(new_stack);
+            for (int k = 0; k < st_view_size(original); k++) {
+                insert_stack(new_stack, 'O');
+            }
+            st_set_color(new_stack, st_view_color(original));
+        }
+    }
+    return copy;
+}
+
+bool boards_equal(Board *b1, Board *b2) {
+    if (b1->rows != b2->rows || b1->cols != b2->cols) return false;
+
+    for (int i = 0; i < b1->rows; i++) {
+        for (int j = 0; j < b1->cols; j++) {
+            Stack *s1 = b1->cells[i][j];
+            Stack *s2 = b2->cells[i][j];
+
+            if (st_view_size(s1) != st_view_size(s2)) return false;
+            if (st_view_color(s1) != st_view_color(s2)) return false;
+        }
+    }
+    return true;
+}
