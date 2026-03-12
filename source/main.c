@@ -40,6 +40,8 @@ int main(void) {
         bool is_p1 = current == p1;
         int selected = is_p1 ? input_select_row(board->rows) : input_select_col(board->cols);
 
+        Board *previous_state = copy_board(board);
+
         if (is_p1) {
             pick_row(hand, board, selected, board->cols);
         } else {
@@ -50,19 +52,13 @@ int main(void) {
         display_board(board);
 
         int hand_sz = hand_size(hand);
-        
-        // Verificacao de desistencia
-        if (check_withdrawal(hand)) {
-            GameResult result = resolve_withdrawal(board, other);
-            display_game_end_withdrawal(result.winner, result.points);
-            break;
-        }
 
         display_hand_size(hand_sz);
 
         PlayedHand *move = input_get_played_positions(hand_sz);
 
         ValidationResult validation;
+        // Da pra esconder essa validacao
         do {
             validation = validate_move(move, board->cols); // <- GAMBIARRA
             if (!validation.is_valid) {
@@ -73,6 +69,14 @@ int main(void) {
         } while (!validation.is_valid);
 
         GameResult result = execute_round(board, hand, move, hand_sz, current);
+
+        if (boards_equal(previous_state, board)) {
+            GameResult withdrawal_result = resolve_withdrawal(board, other);
+            destroy_board(previous_state);
+            // display_game_end_withdrawal(withdrawal_result.winner, withdrawal_result.points);
+            printf("O estado do jogo nao foi alterado! Encerrando...\n");
+            break;
+        }
 
         system("clear");
         display_board(board);
@@ -87,11 +91,11 @@ int main(void) {
         display_current_score(p1, p2);
 
         free_played_hand(move);
-        
+
         Player *temp = current;
         current = other;
         other = temp;
-        
+
         board->turns++;
     }
 

@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include "../ui/colors.h"
+#include <stdbool.h>
 #include "stack.h"
 #define TOKEN 'x'
 
@@ -18,5 +19,7 @@ int destroy_board_partial(Board *b, int rows_filled, int cols_filled);
 int init_board(Board *b);
 int fill_board(Board *b);
 int view_board_size(Board *b);
+Board *copy_board(Board *b);
+bool boards_equal(Board *b1, Board *b2);
 
 #endif
