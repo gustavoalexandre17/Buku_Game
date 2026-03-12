@@ -32,6 +32,7 @@ int main(void) {
         if (board->turns > 1 && check_all_singletons(board)) {
             GameResult result = resolve_singletons_endgame(board, p1, p2);
             display_game_end_singletons(result.winner, result.points);
+            break;
         }
 
         display_turn_start(current);
@@ -51,14 +52,6 @@ int main(void) {
         display_board(board);
 
         int hand_sz = hand_size(hand);
-
-        /*
-        if (check_withdrawal(hand)) {
-            GameResult result = resolve_withdrawal(board, other);
-            display_game_end_withdrawal(result.winner, result.points);
-            break;
-        }
-        */ 
 
         display_hand_size(hand_sz);
 
@@ -80,7 +73,7 @@ int main(void) {
         if (boards_equal(previous_state, board)) {
             GameResult withdrawal_result = resolve_withdrawal(board, other);
             destroy_board(previous_state);
-            //display_game_end_withdrawal(withdrawal_result.winner, withdrawal_result.points);
+            // display_game_end_withdrawal(withdrawal_result.winner, withdrawal_result.points);
             printf("O estado do jogo nao foi alterado! Encerrando...\n");
             break;
         }
@@ -98,16 +91,18 @@ int main(void) {
         display_current_score(p1, p2);
 
         free_played_hand(move);
-        
+
         Player *temp = current;
         current = other;
         other = temp;
-        
+
         board->turns++;
     }
 
     destroy_board(board);
     free_hand(hand);
+    destroy_player(p1);
+    destroy_player(p2);
     display_goodbye();
 
     return 0;

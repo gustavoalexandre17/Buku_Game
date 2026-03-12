@@ -1,4 +1,5 @@
 # ninja log v7
+<<<<<<< HEAD
 1	57	1773274817436343371	CMakeFiles/buku_game.dir/source/main.c.o	f9c6215cab2283fd
 102	1620	1773274603734275227	CMakeFiles/buku_game.dir/source/move.c.o	23814e80c64e127b
 57	213	1773274817492343040	/home/gustavo/Projects/Buku_Game/bin/buku_game	8ae5a224088829e
@@ -9,3 +10,20 @@
 106	1621	1773274603737275189	CMakeFiles/buku_game.dir/source/domain/hand.c.o	3c05e724ab7561d
 103	1624	1773274603735382851	CMakeFiles/buku_game.dir/source/domain/board.c.o	cdbac1e7fa926c47
 1610	1683	1773274605242672527	CMakeFiles/buku_game.dir/source/domain/game_logic.c.o	508e0d6cd097e959
+=======
+1	59	1773185368973840075	CMakeFiles/buku_game.dir/source/main.c.o	f9c6215cab2283fd
+9	1288	1773185045604908027	CMakeFiles/buku_game.dir/source/move.c.o	23814e80c64e127b
+1389	2033	1773185046983742906	/home/gustavo/Projects/Buku_Game/bin/buku_game	8ae5a224088829e
+10	1360	1773185045605872335	CMakeFiles/buku_game.dir/source/domain/stack.c.o	90d2e88c436ab628
+10	1289	1773185045605210061	CMakeFiles/buku_game.dir/source/domain/player.c.o	ea73456f0602f5a2
+3	78	1773185230720399139	CMakeFiles/buku_game.dir/source/ui/display.c.o	8b836420788beab6
+1293	1351	1773185046887742209	CMakeFiles/buku_game.dir/source/ui/input.c.o	5fab7ad5290f864c
+12	1293	1773185045606732909	CMakeFiles/buku_game.dir/source/domain/hand.c.o	3c05e724ab7561d
+10	1350	1773185045605556499	CMakeFiles/buku_game.dir/source/domain/board.c.o	cdbac1e7fa926c47
+3	72	1773185230719991448	CMakeFiles/buku_game.dir/source/domain/game_logic.c.o	508e0d6cd097e959
+1	74	1773185530285759367	CMakeFiles/buku_game.dir/source/domain/player.c.o	ea73456f0602f5a2
+2	79	1773185530286227120	CMakeFiles/buku_game.dir/source/domain/game_logic.c.o	508e0d6cd097e959
+2	81	1773185530286710175	CMakeFiles/buku_game.dir/source/ui/display.c.o	8b836420788beab6
+1	89	1773185530284758339	CMakeFiles/buku_game.dir/source/main.c.o	f9c6215cab2283fd
+89	135	1773185530372758822	/home/gustavo/Projects/Buku_Game/bin/buku_game	8ae5a224088829e
+>>>>>>> e53677577b271b7118ee3feaa8ed941c8b235d39

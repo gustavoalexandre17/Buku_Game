@@ -17,3 +17,11 @@ Player *create_player(char *color) {
 
     return new_player;
 }
+
+void destroy_player(Player *player) {
+    if (!player)
+        return;
+
+    free_stack(player->points);
+    free(player);
+}
